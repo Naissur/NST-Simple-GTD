@@ -14,5 +14,5 @@ public abstract class AbstractView {
 	
 	public abstract void onNewTaskDialogExecuted(String objective);
 	
-	private AbstractController m_controller;
+	protected AbstractController m_controller;
 }

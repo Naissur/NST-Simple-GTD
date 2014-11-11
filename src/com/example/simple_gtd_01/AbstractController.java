@@ -12,5 +12,5 @@ public abstract class AbstractController {
 	
 	public abstract void addTaskDialogExecuted(String task_objective);
 	
-	private AbstractModel m_model;
+	protected AbstractModel m_model;
 }

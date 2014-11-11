@@ -12,5 +12,5 @@ public abstract class AbstractModel {
 	
 	public abstract void addNewTaskToModel(String objective);
 	
-	private AbstractView m_view;
+	protected AbstractView m_view;
 }

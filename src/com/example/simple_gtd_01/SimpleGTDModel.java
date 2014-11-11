@@ -10,6 +10,8 @@ public class SimpleGTDModel extends AbstractModel {
 	@Override
 	public void addNewTaskToModel(String objective) {
 		System.out.println("Model: Adding task \""+objective+"\" to model");
+		
+		m_view.addNewTaskToView(objective);
 	}
 
 }
