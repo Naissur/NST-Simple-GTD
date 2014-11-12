@@ -1,7 +1,20 @@
 <resources>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="SimpleGTD.actionbar_height">17mm</dimen>
+    <dimen name="SimpleGTD.actionbar_text_size">8mm</dimen>
+
+    <dimen name="SimpleGTD.activity_horizontal_margin">0dp</dimen>
+    <dimen name="SimpleGTD.activity_vertical_margin">0dp</dimen>
+
+    <dimen name="SimpleGTD.todo_text_size">8mm</dimen>
+    <dimen name="SimpleGTD.todo_width">-1dp</dimen>		<!--  -1dp = Match parent -->
+    <dimen name="SimpleGTD.todo_height">15mm</dimen>
+    
+    <dimen name="SimpleGTD.task_done_text_size">5mm</dimen>
+    <dimen name="SimpleGTD.task_done_width">-1dp</dimen>		<!--  -1dp = Match parent -->
+    <dimen name="SimpleGTD.task_done_height">10mm</dimen>
+    <dimen name="SimpleGTD.task_done_padding_left">3mm</dimen>
+
 
 </resources>

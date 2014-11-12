@@ -1,12 +1,12 @@
 package com.simple_gtd_01;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.simple_gtd_01.R;
 import com.simple_gtd_01.controller.AbstractController;
@@ -21,6 +21,7 @@ public class MainActivity extends Activity implements AbstractView {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);     //  Fixed Portrait orientation
 		setContentView(R.layout.activity_main);
 		
 		m_model = new SimpleGTDModel(this);
@@ -41,20 +42,17 @@ public class MainActivity extends Activity implements AbstractView {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.SimpleGTD_action_settings) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	
 	
 	// View/controller methods
 
 	public void newTaskButtonClicked(View v){
 		m_controller.addTaskDialogExecuted("Get things done");
 	}
-	
 	
 	// View methods
 	
@@ -63,20 +61,14 @@ public class MainActivity extends Activity implements AbstractView {
 	}
 
 	@Override
-	public void addNewTaskToView(String objective) {
+	public void addNewTaskToView(int identifier, String objective) {
 		System.out.println("View: Adding task \""+objective+"\" to view");
-		TextView textview = new TextView(this);
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT);
-
-		textview.setLayoutParams(params);
-		textview.setText(objective);
-		LinearLayout layout = (LinearLayout)this.findViewById(R.id.doneTaskList);	
-		if(layout != null){
-            layout.addView(textview);
-		}else{
-			System.out.println("View: Error - coudln't find doneTaskList");
-		}
+		//TODO null checks
+		TextView task_done_view = (TextView)getLayoutInflater().inflate(R.layout.task_done_template, null);
+		task_done_view.setText(objective);
+		LinearLayout layout = (LinearLayout)this.findViewById(R.id.SimpleGTD_doneTaskList);	
+		layout.addView(task_done_view);
+    	System.out.println("View: Error - coudln't find doneTaskList");
 	}
 
 	@Override

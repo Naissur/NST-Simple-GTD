@@ -2,43 +2,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/SimpleGTD.activity_vertical_margin"
+    android:paddingLeft="@dimen/SimpleGTD.activity_horizontal_margin"
+    android:paddingRight="@dimen/SimpleGTD.activity_horizontal_margin"
+    android:paddingTop="@dimen/SimpleGTD.activity_vertical_margin"
     tools:context="com.simple_gtd_01.MainActivity" >
 
    	<LinearLayout
        	android:orientation="vertical"
-       	android:id="@+id/mainLayout"
+       	android:id="@+id/SimpleGTD.mainLayout"
        	android:layout_width="match_parent"
        	android:layout_height="match_parent"
    	>
-       	<Button 
-           	android:layout_width="match_parent"
-           	android:layout_height="wrap_content"
-           	android:text="Add new task"
-           	android:id="@+id/newTaskButton"
-           	android:onClick="newTaskButtonClicked"/>
+   		<Button
+   		    android:text="@string/SimpleGTD.todo_text"
+   		    android:layout_width="@dimen/SimpleGTD.todo_width"
+   		    android:layout_height="@dimen/SimpleGTD.todo_height"
+   		    android:onClick="newTaskButtonClicked"
+   		    android:background="@drawable/todo_button_background"
+   		    style="@style/SimpleGTD.todo_text_appearance"/>
+   		    
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:id="@+id/doneTaskList"
+                android:id="@+id/SimpleGTD.doneTaskList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-            >
-                <TextView
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <!--  <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hello 1" />
-
+                    android:text="Hello 1" 
+                    style="@style/SimpleGTD.task_done_style"  />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hello 2" />
+                    android:text="Hello 2"
+                    style="@style/SimpleGTD.task_done_style" />
+                   -->
 
             </LinearLayout>
          </ScrollView>

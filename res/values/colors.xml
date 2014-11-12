@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Colors  -->
+    <color name="SimpleGTD.actionbar_background_color">#96A6E3</color>
+    <color name="SimpleGTD.actionbar_text_color">#FFFFFF</color>
+
+    <color name="SimpleGTD.todo_pressed_color">#A6B5E7</color>
+    <color name="SimpleGTD.todo_unpressed_color">#AFBFF4</color>
+    <color name="SimpleGTD.todo_text_color">#FFFFFF</color>
+    <color name="SimpleGTD.todo_border_color">#96A6E3</color>
+    
+    <color name="SimpleGTD.task_done_background_color">#D3DBFF</color>
+    <color name="SimpleGTD.task_done_text_color">#000000</color>
+    <color name="SimpleGTD.task_done_border_color">#BEC5EE</color>
+</resources>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Simple GTD</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="SimpleGTD.app_name">Simple GTD</string>
+    <string name="SimpleGTD.hello_world">Hello world!</string>
+    <string name="SimpleGTD.action_settings">Settings</string>
+    <string name="SimpleGTD.ic_action_settings">Settings</string>
+    <string name="SimpleGTD.todo_text">To Do</string>
 
 </resources>

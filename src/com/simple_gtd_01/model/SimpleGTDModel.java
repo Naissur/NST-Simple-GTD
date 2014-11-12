@@ -11,7 +11,7 @@ public class SimpleGTDModel implements AbstractModel {
 
 	public void addNewTaskToModel(String objective) {
 		System.out.println("Model: Adding task \""+objective+"\" to model");
-		m_view.addNewTaskToView(objective);
+		m_view.addNewTaskToView(0, objective);   // GENERATE IDENTIFIER!
 	}
 
 	private AbstractView m_view;

@@ -1,10 +1,10 @@
-<resources>
-
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
+    <style name="SimpleGTD.AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -13,8 +13,54 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="SimpleGTD.AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:actionBarStyle">@style/SimpleGTD.ActionBar</item>
+    </style>
+
+
+    <!-- ActionBar styles -->
+    <style name="SimpleGTD.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/actionbar_background</item>
+        <item name="android:height">@dimen/SimpleGTD.actionbar_height</item>
+        <item name="android:titleTextStyle">@style/SimpleGTD.actionbar_text_style</item>
+        <item name="android:displayOptions">showTitle</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <!--  ActionBar text style -->
+    <style name="SimpleGTD.actionbar_text_style" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/SimpleGTD.actionbar_text_color</item>
+        <item name="android:textSize">@dimen/SimpleGTD.actionbar_text_size</item>
+    </style>
+    
+
+    <style name="SimpleGTD.todo_text_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/SimpleGTD.todo_text_color</item>
+        <item name="android:textSize">@dimen/SimpleGTD.todo_text_size</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+    
+    <!--  Done Task style -->
+    <style name="SimpleGTD.task_done_style" parent="@android:style/Widget.TextView">
+        <item name="android:width">@dimen/SimpleGTD.task_done_width</item>
+        <item name="android:height">@dimen/SimpleGTD.task_done_height</item>
+        <!-- <item name="android:gravity">center</item>  -->
+        <item name="android:background">@drawable/task_done_background</item>
+        <item name="android:textAppearance">@style/SimpleGTD.task_done_text_appearance</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/SimpleGTD.task_done_padding_left</item>
+    </style>
+
+    <style name="SimpleGTD.task_done_text_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/SimpleGTD.task_done_text_color</item>
+        <item name="android:textSize">@dimen/SimpleGTD.task_done_text_size</item>
     </style>
 
 </resources>

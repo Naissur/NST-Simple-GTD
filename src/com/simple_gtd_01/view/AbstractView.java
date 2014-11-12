@@ -6,7 +6,7 @@ public interface AbstractView {
 
 	public void setController(AbstractController controller);
 	
-	public void addNewTaskToView(String objective);
+	public void addNewTaskToView(int identifier, String objective);
 	
 	public void onNewTaskDialogExecuted(String objective);
 }
