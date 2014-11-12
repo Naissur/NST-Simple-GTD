@@ -1,4 +1,6 @@
-package com.example.simple_gtd_01;
+package com.simple_gtd_01.model;
+
+import com.simple_gtd_01.view.AbstractView;
 
 public abstract class AbstractModel {
 	public AbstractModel(){

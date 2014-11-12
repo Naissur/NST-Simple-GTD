@@ -1,4 +1,6 @@
-package com.example.simple_gtd_01;
+package com.simple_gtd_01.controller;
+
+import com.simple_gtd_01.model.AbstractModel;
 
 public abstract class AbstractController {
 	public AbstractController(){

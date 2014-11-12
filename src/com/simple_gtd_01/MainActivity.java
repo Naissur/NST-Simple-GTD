@@ -1,10 +1,20 @@
-package com.example.simple_gtd_01;
+package com.simple_gtd_01;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.simple_gtd_01.R;
+import com.simple_gtd_01.controller.AbstractController;
+import com.simple_gtd_01.controller.SimpleGTDController;
+import com.simple_gtd_01.model.AbstractModel;
+import com.simple_gtd_01.model.SimpleGTDModel;
+import com.simple_gtd_01.view.AbstractView;
+import com.simple_gtd_01.view.SimpleGTDView;
 
 public class MainActivity extends Activity {
 
@@ -23,7 +33,13 @@ public class MainActivity extends Activity {
 	}
 	
 	public void newTaskButtonClicked(View v){
-		m_view.addNewTaskToView("Write simple gtd!");
+		TextView textview = new TextView(this);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT);
+		textview.setLayoutParams(params);
+		textview.setText("Hello, world!");
+		LinearLayout layout = (LinearLayout)findViewById(R.id.doneTaskList);	
+		layout.addView(textview);
 	}
 
 	@Override

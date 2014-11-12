@@ -6,31 +6,43 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.simple_gtd_01.MainActivity" >
+    tools:context="com.simple_gtd_01.MainActivity" >
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/doneTaskList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-    >
-    		
-        <Button 
+   	<LinearLayout
+       	android:orientation="vertical"
+       	android:id="@+id/mainLayout"
+       	android:layout_width="match_parent"
+       	android:layout_height="match_parent"
+   	>
+       	<Button 
+           	android:layout_width="match_parent"
+           	android:layout_height="wrap_content"
+           	android:text="Add new task"
+           	android:id="@+id/newTaskButton"
+           	android:onClick="newTaskButtonClicked"/>
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add new task"
-            android:id="@+id/newTaskButton"
-            android:onClick="newTaskButtonClicked"/>
-    		
-        <TextView
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:text="Hello 1" />
-    	<TextView
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:text="Hello 2" />
-    
-    </LinearLayout>
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/doneTaskList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+            >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hello 1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hello 2" />
+
+            </LinearLayout>
+         </ScrollView>
+    
+	</LinearLayout>
+	
 </RelativeLayout>

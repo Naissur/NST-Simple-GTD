@@ -1,4 +1,6 @@
-package com.example.simple_gtd_01;
+package com.simple_gtd_01.view;
+
+import com.simple_gtd_01.controller.AbstractController;
 
 public abstract class AbstractView {
 	public AbstractView(){

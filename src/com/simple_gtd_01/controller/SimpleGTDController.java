@@ -1,4 +1,5 @@
-package com.example.simple_gtd_01;
+package com.simple_gtd_01.controller;
+
 
 public class SimpleGTDController extends AbstractController {
 
