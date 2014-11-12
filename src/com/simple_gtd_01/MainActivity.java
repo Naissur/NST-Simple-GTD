@@ -14,42 +14,28 @@ import com.simple_gtd_01.controller.SimpleGTDController;
 import com.simple_gtd_01.model.AbstractModel;
 import com.simple_gtd_01.model.SimpleGTDModel;
 import com.simple_gtd_01.view.AbstractView;
-import com.simple_gtd_01.view.SimpleGTDView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements AbstractView {
+	
+	//Activity methods
 
-	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		m_model = new SimpleGTDModel();
-		m_view = new SimpleGTDView();
-		m_controller = new SimpleGTDController();
-		
-		m_model.setView(m_view);
-		m_view.setController(m_controller);
-		m_controller.setModel(m_model);
+		m_model = new SimpleGTDModel(this);
+		m_controller = new SimpleGTDController(m_model);
+		this.setController(m_controller);
+
 	}
 	
-	public void newTaskButtonClicked(View v){
-		TextView textview = new TextView(this);
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT);
-		textview.setLayoutParams(params);
-		textview.setText("Hello, world!");
-		LinearLayout layout = (LinearLayout)findViewById(R.id.doneTaskList);	
-		layout.addView(textview);
-	}
 
-	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
-	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
@@ -62,7 +48,42 @@ public class MainActivity extends Activity {
 	}
 	
 	
+	
+	// View/controller methods
+
+	public void newTaskButtonClicked(View v){
+		m_controller.addTaskDialogExecuted("Get things done");
+	}
+	
+	
+	// View methods
+	
+	public void setController(AbstractController controller) {
+		m_controller = controller;
+	}
+
+	@Override
+	public void addNewTaskToView(String objective) {
+		System.out.println("View: Adding task \""+objective+"\" to view");
+		TextView textview = new TextView(this);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT);
+
+		textview.setLayoutParams(params);
+		textview.setText(objective);
+		LinearLayout layout = (LinearLayout)this.findViewById(R.id.doneTaskList);	
+		if(layout != null){
+            layout.addView(textview);
+		}else{
+			System.out.println("View: Error - coudln't find doneTaskList");
+		}
+	}
+
+	@Override
+	public void onNewTaskDialogExecuted(String objective) {
+		
+	}
+
 	private AbstractModel m_model;
-	private AbstractView m_view;
 	private AbstractController m_controller;
 }

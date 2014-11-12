@@ -1,17 +1,18 @@
 package com.simple_gtd_01.model;
 
-public class SimpleGTDModel extends AbstractModel {
+import com.simple_gtd_01.view.AbstractView;
 
-	public SimpleGTDModel() {
-		super();
+public class SimpleGTDModel implements AbstractModel {
+
+	public SimpleGTDModel(AbstractView view) {
 		System.out.println("Model: Simple GTD Model initialized");
+		m_view = view;
 	}
 
-	@Override
 	public void addNewTaskToModel(String objective) {
 		System.out.println("Model: Adding task \""+objective+"\" to model");
-		
 		m_view.addNewTaskToView(objective);
 	}
 
+	private AbstractView m_view;
 }
