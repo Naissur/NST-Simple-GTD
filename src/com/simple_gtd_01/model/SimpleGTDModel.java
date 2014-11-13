@@ -10,7 +10,7 @@ public class SimpleGTDModel implements AbstractModel {
 		System.out.println("Model: Simple GTD Model initialized");
 		m_view = view;
 	}
-
+	
 	public AbstractView getView(){
 		return m_view;
 	}
