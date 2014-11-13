@@ -19,5 +19,9 @@ public class SimpleGTDController implements AbstractController {
 		
 	}
 	
+	public AbstractModel getModel(){
+		return m_model;
+	}
+	
 	private AbstractModel m_model;
 }
