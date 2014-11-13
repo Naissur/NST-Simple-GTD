@@ -18,7 +18,7 @@
    		    android:text="@string/SimpleGTD.todo_text"
    		    android:layout_width="@dimen/SimpleGTD.todo_width"
    		    android:layout_height="@dimen/SimpleGTD.todo_height"
-   		    android:onClick="newTaskButtonClicked"
+   		    android:onClick="onToDoButtonClicked"
    		    android:background="@drawable/todo_button_background"
    		    style="@style/SimpleGTD.todo_text_appearance"/>
    		    

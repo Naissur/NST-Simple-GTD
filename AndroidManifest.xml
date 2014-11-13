@@ -12,9 +12,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/SimpleGTD.app_name"
-        android:theme="@style/SimpleGTD.AppTheme">
+        android:theme="@style/SimpleGTD.AppTheme" >
         <activity
-            android:name="com.simple_gtd_01.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/SimpleGTD.app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

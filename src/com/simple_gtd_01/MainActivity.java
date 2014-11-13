@@ -1,11 +1,14 @@
 package com.simple_gtd_01;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.simple_gtd_01.R;
@@ -48,11 +51,6 @@ public class MainActivity extends Activity implements AbstractView {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	// View/controller methods
-
-	public void newTaskButtonClicked(View v){
-		m_controller.addTaskDialogExecuted("Get things done");
-	}
 	
 	// View methods
 	
@@ -69,6 +67,11 @@ public class MainActivity extends Activity implements AbstractView {
 		LinearLayout layout = (LinearLayout)this.findViewById(R.id.SimpleGTD_doneTaskList);	
 		layout.addView(task_done_view);
     	System.out.println("View: Error - coudln't find doneTaskList");
+	}
+	
+	public void onToDoButtonClicked(View v){
+		AddNewTaskDialog dialog = new AddNewTaskDialog(this);
+		dialog.show();
 	}
 
 	@Override
