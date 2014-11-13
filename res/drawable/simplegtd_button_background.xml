@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:state_pressed="true" >
+    <shape>
+      <solid
+          android:color="@color/SimpleGTD.Button.pressed_color" />
+      <stroke
+          android:width="@dimen/SimpleGTD.Button.border_width"
+          android:color="@color/SimpleGTD.Button.border_color" />
+    </shape>
+  </item>
+  <item>    <!-- Render by default -->
+    <shape>
+      <solid
+          android:color="@color/SimpleGTD.Button.color" />
+      <stroke
+          android:width="@dimen/SimpleGTD.Button.border_width"
+          android:color="@color/SimpleGTD.Button.border_color" />
+    </shape>
+  </item>
+</selector>

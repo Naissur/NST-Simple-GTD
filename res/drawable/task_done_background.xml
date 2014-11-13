@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-	<solid android:color="@color/SimpleGTD.task_done_background_color"/>
-	<stroke android:width="1px" android:color="@color/SimpleGTD.task_done_border_color"/>
-</shape>

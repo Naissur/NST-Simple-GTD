@@ -15,12 +15,12 @@
        	android:layout_height="match_parent"
    	>
    		<Button
-   		    android:text="@string/SimpleGTD.todo_text"
-   		    android:layout_width="@dimen/SimpleGTD.todo_width"
-   		    android:layout_height="@dimen/SimpleGTD.todo_height"
+   		    android:text="@string/SimpleGTD.Todo.text"
+   		    android:layout_width="@dimen/SimpleGTD.Todo.width"
+   		    android:layout_height="@dimen/SimpleGTD.Todo.height"
    		    android:onClick="onToDoButtonClicked"
-   		    android:background="@drawable/todo_button_background"
-   		    style="@style/SimpleGTD.todo_text_appearance"/>
+   		    android:background="@drawable/simplegtd_todo_background"
+   		    style="@style/SimpleGTD.Todo.text_appearance"/>
    		    
         <ScrollView
             android:layout_width="match_parent"
