@@ -23,10 +23,22 @@
     <dimen name="SimpleGTD.Todo.text_size">32dp</dimen>
     <dimen name="SimpleGTD.Todo.width">-1dp</dimen> <!-- -1dp = Match parent -->
     <dimen name="SimpleGTD.Todo.height">56dp</dimen>
+
+    <dimen name="SimpleGTD.Done.text_size">32dp</dimen>
+    <dimen name="SimpleGTD.Done.width">-1dp</dimen> <!-- -1dp = Match parent -->
+    <dimen name="SimpleGTD.Done.height">56dp</dimen>
     
+    <dimen name="SimpleGTD.TaskUndone.text_size">24dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.padding_left">12dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.padding_top">8dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.padding_bottom">8dp</dimen>
+
     <dimen name="SimpleGTD.TaskDone.text_size">24dp</dimen>
     <dimen name="SimpleGTD.TaskDone.padding_left">12dp</dimen>
     <dimen name="SimpleGTD.TaskDone.padding_top">8dp</dimen>
     <dimen name="SimpleGTD.TaskDone.padding_bottom">8dp</dimen>
+    
+    <dimen name="SimpleGTD.TaskUndone.DoneButton.height">48dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.DoneButton.width">48dp</dimen>
 
 </resources>

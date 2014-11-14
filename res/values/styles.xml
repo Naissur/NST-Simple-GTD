@@ -48,6 +48,16 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
     </style>
+    
+    <!--  Done text appearance -->
+    <style name="SimpleGTD.Done.text_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/SimpleGTD.Done.text_color</item>
+        <item name="android:textSize">@dimen/SimpleGTD.Done.text_size</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
 
     <!-- Dialogs theme -->
     <style name="SimpleGTD.DialogTheme" parent="@android:style/Theme.Holo.Light.Dialog">
@@ -60,12 +70,32 @@
     </style>
         
     
+    <!--  Undone Task style -->
+    <style name="SimpleGTD.TaskUndone.style" parent="@android:style/Widget.TextView">
+        <!-- <item name="android:width">@dimen/SimpleGTD.TaskUndone.width</item>
+        <item name="android:height">@dimen/SimpleGTD.TaskUndone.height</item>  -->
+        <!-- <item name="android:gravity">center</item>  -->
+        <!-- <item name="android:background">@drawable/simplegtd_task_undone_background</item> -->
+        <item name="android:textAppearance">@style/SimpleGTD.TaskUndone.text_appearance</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/SimpleGTD.TaskUndone.padding_left</item>
+        <item name="android:paddingTop">@dimen/SimpleGTD.TaskUndone.padding_top</item>
+        <item name="android:paddingBottom">@dimen/SimpleGTD.TaskUndone.padding_bottom</item>
+    </style>
+
+    <!--  UnDone Task text appearance -->
+    <style name="SimpleGTD.TaskUndone.text_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/SimpleGTD.TaskUndone.text_color</item>
+        <item name="android:textSize">@dimen/SimpleGTD.TaskUndone.text_size</item>
+    </style>
+    
+    
     <!--  Done Task style -->
     <style name="SimpleGTD.TaskDone.style" parent="@android:style/Widget.TextView">
         <!-- <item name="android:width">@dimen/SimpleGTD.TaskDone.width</item>
         <item name="android:height">@dimen/SimpleGTD.TaskDone.height</item>  -->
         <!-- <item name="android:gravity">center</item>  -->
-        <item name="android:background">@drawable/simplegtd_task_done_background</item>
+        <!-- <item name="android:background">@drawable/simplegtd_task_done_background</item> -->
         <item name="android:textAppearance">@style/SimpleGTD.TaskDone.text_appearance</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">@dimen/SimpleGTD.TaskDone.padding_left</item>
@@ -73,7 +103,7 @@
         <item name="android:paddingBottom">@dimen/SimpleGTD.TaskDone.padding_bottom</item>
     </style>
 
-    <!--  Done Task text appearance -->
+    <!--  Undone Task text appearance -->
     <style name="SimpleGTD.TaskDone.text_appearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/SimpleGTD.TaskDone.text_color</item>
         <item name="android:textSize">@dimen/SimpleGTD.TaskDone.text_size</item>

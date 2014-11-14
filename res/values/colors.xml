@@ -12,13 +12,24 @@
     <color name="SimpleGTD.Button.border_color">#899bdf</color>
 
     <color name="SimpleGTD.Todo.color">#a3b1e7</color>
-    <color name="SimpleGTD.Todo.pressed_color">#b1bdea</color>
+    <color name="SimpleGTD.Todo.pressed_color">#889ae0</color>
     <color name="SimpleGTD.Todo.text_color">#FFFFFF</color>
     <color name="SimpleGTD.Todo.border_color">#96a6e3</color>
+
+    <color name="SimpleGTD.Done.color">#B4EC5E</color>
+    <color name="SimpleGTD.Done.pressed_color">#B4EC5E</color>
+    <color name="SimpleGTD.Done.text_color">#FFFFFF</color>
+    <color name="SimpleGTD.Done.border_color">#9c0</color>
     
-    <color name="SimpleGTD.TaskDone.background_color">#e6eaf8</color>
+    <color name="SimpleGTD.TaskUndone.DoneButton.background">#d9dff5</color>
+
+    <color name="SimpleGTD.TaskUndone.background_color">#e6eaf8</color>
+    <color name="SimpleGTD.TaskUndone.text_color">#000000</color>
+    <color name="SimpleGTD.TaskUndone.border_color">#ccd3f1</color>
+    
+    <color name="SimpleGTD.TaskDone.background_color">#D8F9A6</color>
     <color name="SimpleGTD.TaskDone.text_color">#000000</color>
-    <color name="SimpleGTD.TaskDone.border_color">#ccd3f1</color>
+    <color name="SimpleGTD.TaskDone.border_color">#c3f676</color>
     
     <color name="SimpleGTD.AddTaskDialog.background_color">#f4f6fc</color>
 

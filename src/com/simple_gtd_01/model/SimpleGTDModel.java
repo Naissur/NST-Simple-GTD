@@ -20,4 +20,11 @@ public class SimpleGTDModel implements AbstractModel {
 		// TODO Auto-generated method stub
 		m_view.addNewTaskToView(0, objective);
 	}
+
+	@Override
+	public void setTaskAsDone(int id) {
+		// TODO Auto-generated method stub
+		m_view.removeTaskFromView(id);
+		m_view.addDoneTaskToView(id, "Task, marked as done");
+	}
 }

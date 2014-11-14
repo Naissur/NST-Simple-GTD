@@ -8,6 +8,6 @@ public interface AbstractView {
 	public AbstractController getController();
 	
 	public void addNewTaskToView(int identifier, String objective);
-	
-	public void onNewTaskDialogExecuted(String objective);
+	public void addDoneTaskToView(int identifier, String objective);
+	public void removeTaskFromView(int id);
 }

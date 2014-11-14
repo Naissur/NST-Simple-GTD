@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
+<LinearLayout 
+    android:id="@+id/SimpleGTD.TaskDoneTemplate"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="@style/SimpleGTD.TaskDone.style" />
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation = "horizontal"
+    android:background="@drawable/simplegtd_task_done_background"
+    android:layout_width = "match_parent"
+    android:layout_height = "match_parent">
+
+    <TextView
+        android:id="@+id/SimpleGTD.TaskDoneTemplate.TextView"
+        android:text="@string/SimpleGTD.TaskDone.default_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        style="@style/SimpleGTD.TaskDone.style" />
+</LinearLayout>

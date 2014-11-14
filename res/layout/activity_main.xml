@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,44 +9,40 @@
     android:paddingTop="@dimen/SimpleGTD.activity_vertical_margin"
     tools:context="com.simple_gtd_01.MainActivity" >
 
-   	<LinearLayout
-       	android:orientation="vertical"
-       	android:id="@+id/SimpleGTD.mainLayout"
-       	android:layout_width="match_parent"
-       	android:layout_height="match_parent"
-   	>
-   		<Button
-   		    android:text="@string/SimpleGTD.Todo.text"
-   		    android:layout_width="@dimen/SimpleGTD.Todo.width"
-   		    android:layout_height="@dimen/SimpleGTD.Todo.height"
-   		    android:onClick="onToDoButtonClicked"
-   		    android:background="@drawable/simplegtd_todo_background"
-   		    style="@style/SimpleGTD.Todo.text_appearance"/>
-   		    
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/SimpleGTD.doneTaskList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <!--  <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Hello 1" 
-                    style="@style/SimpleGTD.task_done_style"  />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Hello 2"
-                    style="@style/SimpleGTD.task_done_style" />
-                   -->
-
-            </LinearLayout>
-         </ScrollView>
+		<LinearLayout
+		   	android:orientation="vertical"
+			android:id="@+id/SimpleGTD.UndoneTasksContainer"
+       		android:layout_width="match_parent"
+       		android:layout_height="match_parent"
+   		>
+   			<Button
+   		    	android:text="@string/SimpleGTD.Todo.text"
+   		    	android:layout_width="match_parent"
+   		    	android:layout_height="@dimen/SimpleGTD.Todo.height"
+   		    	android:background="@drawable/simplegtd_todo_background"
+   		    	android:onClick="onToDoButtonClicked"
+   		    	style="@style/SimpleGTD.Todo.text_appearance"/>
     
+		</LinearLayout>
+
+		 <LinearLayout
+		   	android:orientation="vertical"
+			android:id="@+id/SimpleGTD.DoneTasksContainer"
+       		android:layout_width="match_parent"
+       		android:layout_height="match_parent" > 
+
+   			<Button
+   		    	android:text="@string/SimpleGTD.Done.text"
+   		    	android:layout_width="@dimen/SimpleGTD.Done.width"
+   		    	android:layout_height="@dimen/SimpleGTD.Done.height"
+   		    	android:background="@drawable/simplegtd_done_background"
+   		    	style="@style/SimpleGTD.Done.text_appearance"/>
+		</LinearLayout>
 	</LinearLayout>
+</HorizontalScrollView>
 	
-</RelativeLayout>

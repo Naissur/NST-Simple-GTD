@@ -19,6 +19,10 @@ public class SimpleGTDController implements AbstractController {
 		
 	}
 	
+	public void setTaskAsDone(int id){
+		m_model.setTaskAsDone(id);
+	}
+	
 	public AbstractModel getModel(){
 		return m_model;
 	}
