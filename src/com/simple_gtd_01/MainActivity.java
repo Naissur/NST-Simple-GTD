@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.animation.LayoutTransition;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Point;
@@ -90,6 +91,13 @@ public class MainActivity extends Activity implements AbstractView {
 		done_container.addView(done_tasks_list);
 		
 		
+		/*LayoutTransition transition = new LayoutTransition();
+		transition.enableTransitionType(LayoutTransition.APPEARING);
+		transition.enableTransitionType(LayoutTransition.DISAPPEARING);
+		//transition.enableTransitionType(LayoutTransition.CHANGING);
+		
+		done_tasks_list.setLayoutTransition(transition);
+		undone_tasks_list.setLayoutTransition(transition);*/
 		
 		m_model = new SimpleGTDModel(this);
 		m_controller = new SimpleGTDController(m_model);
@@ -162,7 +170,7 @@ public class MainActivity extends Activity implements AbstractView {
 			if(undone_tasks_array.get(i).getId() == id){
                 System.out.println("View: Removing task from view...");
 				final int task_id = i;
-				View view_to_remove = undone_tasks_list.getChildAt(i);         // Start view removal animation
+				final View view_to_remove = undone_tasks_list.getChildAt(i);         // Start view removal animation
 
 				Animation remove_anim = AnimationUtils.loadAnimation(this, R.anim.task_removal);
 				remove_anim.setAnimationListener(new AnimationListener(){
@@ -170,6 +178,7 @@ public class MainActivity extends Activity implements AbstractView {
 					public void onAnimationStart(Animation animation) { }
 					@Override
 					public void onAnimationEnd(Animation animation) {
+                        view_to_remove.setHasTransientState(false);
                         undone_tasks_array.remove(task_id);
                         undone_tasks_adapter.notifyDataSetChanged();
                     }
@@ -177,14 +186,15 @@ public class MainActivity extends Activity implements AbstractView {
 					public void onAnimationRepeat(Animation animation) { }
 				});
 				view_to_remove.startAnimation(remove_anim);
+				view_to_remove.setHasTransientState(true);
 				
 				// Start all tasks below up animations
 				
-				for(int task_below_pos = task_id+1; task_below_pos < undone_tasks_list.getCount(); task_below_pos++){
+				/*for(int task_below_pos = task_id+1; task_below_pos < undone_tasks_list.getCount(); task_below_pos++){
                     view_to_remove = undone_tasks_list.getChildAt(task_below_pos);
                     remove_anim = AnimationUtils.loadAnimation(this, R.anim.task_up);
                     view_to_remove.startAnimation(remove_anim);
-				}
+				}*/
 				
 				return;
 			}

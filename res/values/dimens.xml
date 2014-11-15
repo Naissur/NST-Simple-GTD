@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer name = "SimpleGTD.TaskUndone.removal_duration">150</integer>
+    <integer name = "SimpleGTD.TaskUndone.removal_duration">290</integer>
     <integer name = "SimpleGTD.TaskUndone.up_duration">120</integer>
 
     <integer name = "SimpleGTD.TaskUndone.down_duration">1200</integer>
