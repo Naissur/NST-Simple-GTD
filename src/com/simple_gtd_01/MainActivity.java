@@ -5,7 +5,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -70,6 +74,8 @@ public class MainActivity extends Activity implements AbstractView {
 		transition.enableTransitionType(LayoutTransition.APPEARING);
 		transition.enableTransitionType(LayoutTransition.CHANGE_APPEARING);
 		transition.enableTransitionType(LayoutTransition.DISAPPEARING);
+		
+
 		transition.enableTransitionType(LayoutTransition.CHANGE_DISAPPEARING);
 
 		transition.enableTransitionType(LayoutTransition.APPEARING);
@@ -81,6 +87,7 @@ public class MainActivity extends Activity implements AbstractView {
                                 getResources().getInteger(R.integer.SimpleGTD_TaskDone_expand_duration));
 		transition.setStartDelay(LayoutTransition.CHANGE_APPEARING, 
                                 getResources().getInteger(R.integer.SimpleGTD_TaskDone_adding_duration));
+		transition.setStartDelay(LayoutTransition.CHANGE_APPEARING, 400);
 
 		transition.setDuration(LayoutTransition.DISAPPEARING,
 								getResources().getInteger(R.integer.SimpleGTD_TaskDone_removal_duration));
@@ -99,6 +106,9 @@ public class MainActivity extends Activity implements AbstractView {
 		transition.enableTransitionType(LayoutTransition.DISAPPEARING);
 		transition.enableTransitionType(LayoutTransition.CHANGE_DISAPPEARING);
 
+		Animator obj_anim = AnimatorInflater.loadAnimator(this, R.anim.task_removal);
+		transition.setAnimator(LayoutTransition.DISAPPEARING, obj_anim);
+
 		transition.enableTransitionType(LayoutTransition.APPEARING);
 		transition.setDuration(LayoutTransition.APPEARING, 
                                 getResources().getInteger(R.integer.SimpleGTD_TaskUndone_adding_duration));
@@ -108,6 +118,7 @@ public class MainActivity extends Activity implements AbstractView {
                                 getResources().getInteger(R.integer.SimpleGTD_TaskUndone_expand_duration));
 		transition.setStartDelay(LayoutTransition.CHANGE_APPEARING, 
                                 getResources().getInteger(R.integer.SimpleGTD_TaskUndone_adding_duration));
+		transition.setStartDelay(LayoutTransition.CHANGE_APPEARING, 400);
 
 		transition.setDuration(LayoutTransition.DISAPPEARING,
 								getResources().getInteger(R.integer.SimpleGTD_TaskUndone_removal_duration));

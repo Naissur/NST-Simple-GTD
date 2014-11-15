@@ -14,12 +14,14 @@
         android:background="@drawable/simplegtd_task_undone_do_button"
         android:layout_margin="@dimen/SimpleGTD.TaskUndone.DoButton.margin"
         android:clickable="true"
+        android:scaleType="center"
+        android:src="@drawable/simplegtd_task_done_icon"
         android:contentDescription="Make task done"
-        android:layout_height="@dimen/SimpleGTD.TaskUndone.DoneButton.height"
-        android:layout_width="@dimen/SimpleGTD.TaskUndone.DoneButton.width"
-        android:layout_alignParentRight="true"
+        android:layout_height="match_parent"
+        android:layout_width="50dp"
         android:layout_centerVertical="true"
-        />
+        android:layout_alignParentRight="true"
+    />
     <TextView
         android:id="@+id/SimpleGTD.TaskUndoneTemplate.TextView"
         android:text="@string/SimpleGTD.TaskUndone.default_text"

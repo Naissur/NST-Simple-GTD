@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:state_pressed="true" >
-	<layer-list >
-	    <item>
-            <shape>
-                <solid
-                    android:color="@color/SimpleGTD.TaskUndone.DoneButton.background" />
-            </shape>
-        </item>
-        <item>
-            <bitmap 
-                android:src="@drawable/simplegtd_task_done_icon"/>
-        </item>
-    </layer-list>
-  </item>
-  <item>    <!-- Render by default -->
-    <bitmap 
-        android:src="@drawable/simplegtd_task_done_icon"/>
-  </item>
-</selector>
+    <item android:state_pressed="true" >
+        <shape>
+            <solid
+                android:color="@color/SimpleGTD.TaskUndone.DoneButton.pressed_color" />
+        </shape>
+    </item>
+    <item>    <!-- Render by default -->
+        <shape>
+            <solid
+                android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+    </selector>
 

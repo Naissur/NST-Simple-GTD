@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer name = "SimpleGTD.TaskUndone.adding_duration">300</integer>
+    <integer name = "SimpleGTD.TaskUndone.adding_duration">0</integer>
     <integer name = "SimpleGTD.TaskUndone.expand_duration">300</integer>
-    <integer name = "SimpleGTD.TaskUndone.removal_duration">300</integer>
+    <integer name = "SimpleGTD.TaskUndone.removal_duration">400</integer>
     <integer name = "SimpleGTD.TaskUndone.collapse_duration">300</integer>
 
-    <integer name = "SimpleGTD.TaskDone.adding_duration">300</integer>
+    <integer name = "SimpleGTD.TaskDone.adding_duration">0</integer>
     <integer name = "SimpleGTD.TaskDone.expand_duration">300</integer>
     <integer name = "SimpleGTD.TaskDone.removal_duration">300</integer>
     <integer name = "SimpleGTD.TaskDone.collapse_duration">300</integer>
@@ -25,10 +25,10 @@
     <dimen name="SimpleGTD.Button.border_width">1px</dimen>
 
     <dimen name="SimpleGTD.AddTaskDialog.positive_button_width">-1dp</dimen>
-    <dimen name="SimpleGTD.AddTaskDialog.positive_button_height">48dp</dimen>
+    <dimen name="SimpleGTD.AddTaskDialog.positive_button_height">52dp</dimen>
 
     <dimen name="SimpleGTD.AddTaskDialog.negative_button_width">-1dp</dimen>
-    <dimen name="SimpleGTD.AddTaskDialog.negative_button_height">48dp</dimen>
+    <dimen name="SimpleGTD.AddTaskDialog.negative_button_height">52dp</dimen>
     
     <dimen name="SimpleGTD.Todo.text_size">32dp</dimen>
     <dimen name="SimpleGTD.Todo.width">-1dp</dimen> <!-- -1dp = Match parent -->
@@ -43,14 +43,13 @@
     <dimen name="SimpleGTD.TaskUndone.padding_top">8dp</dimen>
     <dimen name="SimpleGTD.TaskUndone.padding_bottom">8dp</dimen>
 
-    <dimen name="SimpleGTD.TaskUndone.DoButton.margin">10dp</dimen>
-
     <dimen name="SimpleGTD.TaskDone.text_size">24dp</dimen>
     <dimen name="SimpleGTD.TaskDone.padding_left">12dp</dimen>
     <dimen name="SimpleGTD.TaskDone.padding_top">8dp</dimen>
     <dimen name="SimpleGTD.TaskDone.padding_bottom">8dp</dimen>
     
-    <dimen name="SimpleGTD.TaskUndone.DoneButton.height">48dp</dimen>
-    <dimen name="SimpleGTD.TaskUndone.DoneButton.width">48dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.DoButton.height">-2dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.DoButton.width">-2dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.DoButton.margin">0dp</dimen>
 
 </resources>
