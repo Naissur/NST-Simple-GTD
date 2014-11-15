@@ -77,9 +77,9 @@
         <!-- <item name="android:gravity">center</item>  -->
         <!-- <item name="android:background">@drawable/simplegtd_task_undone_background</item> -->
         <item name="android:textAppearance">@style/SimpleGTD.TaskUndone.text_appearance</item>
-        <item name="android:ellipsize">end</item>
+        <!-- <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
-        <item name="android:scrollHorizontally">true</item>
+        <item name="android:scrollHorizontally">true</item> -->
 
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">@dimen/SimpleGTD.TaskUndone.padding_left</item>
