@@ -1,8 +1,12 @@
 <HorizontalScrollView 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SimpleGTD.Scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollX="0dp"
+    android:scrollY="0dp"
+    android:scrollbars="none"
     android:paddingBottom="@dimen/SimpleGTD.activity_vertical_margin"
     android:paddingLeft="@dimen/SimpleGTD.activity_horizontal_margin"
     android:paddingRight="@dimen/SimpleGTD.activity_horizontal_margin"
@@ -15,6 +19,7 @@
         android:layout_height="match_parent">
 
 		<LinearLayout
+            android:focusable="false"
 		   	android:orientation="vertical"
 			android:id="@+id/SimpleGTD.UndoneTasksContainer"
        		android:layout_width="match_parent"
@@ -31,6 +36,7 @@
 		</LinearLayout>
 
 		 <LinearLayout
+            android:focusable="false"
 		   	android:orientation="vertical"
 			android:id="@+id/SimpleGTD.DoneTasksContainer"
        		android:layout_width="match_parent"

@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 
 public class AddNewTaskDialog extends Dialog implements OnClickListener {
 
@@ -48,6 +49,8 @@ public class AddNewTaskDialog extends Dialog implements OnClickListener {
 			}
 		});
 	    this.setTitle(R.string.SimpleGTD_AddTaskDialog_title);
+	    
+	    
 	}
 
 	@Override
@@ -59,4 +62,8 @@ public class AddNewTaskDialog extends Dialog implements OnClickListener {
       		}
 	}
 
+	@Override
+	public void onStop(){
+		super.onStop();
+	}
 }

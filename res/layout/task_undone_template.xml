@@ -12,6 +12,7 @@
     <ImageButton 
         android:id="@+id/SimpleGTD.TaskUndoneTemplate.DoButton"
         android:background="@drawable/simplegtd_task_undone_do_button"
+        android:layout_margin="@dimen/SimpleGTD.TaskUndone.DoButton.margin"
         android:clickable="true"
         android:contentDescription="Make task done"
         android:layout_height="@dimen/SimpleGTD.TaskUndone.DoneButton.height"

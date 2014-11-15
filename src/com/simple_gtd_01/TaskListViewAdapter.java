@@ -2,11 +2,19 @@ package com.simple_gtd_01;
 
 import java.util.List;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorInflater;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -31,6 +39,8 @@ public class TaskListViewAdapter extends ArrayAdapter<ViewTask>{
             rowView = inflater.inflate(R.layout.task_undone_template, null, false);
             TextView tv = (TextView) rowView.findViewById(R.id.SimpleGTD_TaskUndoneTemplate_TextView);
             ImageButton do_task_btn = (ImageButton) rowView.findViewById(R.id.SimpleGTD_TaskUndoneTemplate_DoButton);
+            
+            final View res_view = rowView;
             do_task_btn.setOnClickListener(
                 new OnClickListener(){
 					@Override

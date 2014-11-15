@@ -12,7 +12,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.ArrayAdapter;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.LinearLayout.LayoutParams;
@@ -58,11 +62,20 @@ public class MainActivity extends Activity implements AbstractView {
 		undone_tasks_array.add(tsk);
 		tsk = new ViewTask(2, "Get born in state of Mississippi", ViewTask.State.UNDONE);
 		undone_tasks_array.add(tsk);
+		tsk = new ViewTask(3, "While I lie here burning", ViewTask.State.UNDONE);
+		undone_tasks_array.add(tsk);
+		tsk = new ViewTask(4, "As you're incased in ice", ViewTask.State.UNDONE);
+		undone_tasks_array.add(tsk);
+		tsk = new ViewTask(5, "As you're encased in ice", ViewTask.State.UNDONE);
+		undone_tasks_array.add(tsk);
+		tsk = new ViewTask(6, "These four walls will be my dreaded foes", ViewTask.State.UNDONE);
+		undone_tasks_array.add(tsk);
 		
 		
 		undone_tasks_adapter = new TaskListViewAdapter(this, R.layout.task_undone_template, undone_tasks_array);
 		undone_tasks_list.setAdapter(undone_tasks_adapter);
         undone_tasks_list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        undone_tasks_list.setFocusable(false);
 		undone_container.addView(undone_tasks_list);
 
 		done_tasks_list = new ListView(this);
@@ -73,6 +86,7 @@ public class MainActivity extends Activity implements AbstractView {
 		done_tasks_adapter = new TaskListViewAdapter(this, R.layout.task_done_template, done_tasks_array);
 		done_tasks_list.setAdapter(done_tasks_adapter);
         done_tasks_list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        done_tasks_list.setFocusable(false);  // Fixed issue with moving to done tasks after adding new one
 		done_container.addView(done_tasks_list);
 		
 		
@@ -113,8 +127,21 @@ public class MainActivity extends Activity implements AbstractView {
 	@Override
 	public void addNewTaskToView(int identifier, String objective) {
 		System.out.println("View: Adding task \""+objective+"\" to view");
-		undone_tasks_array.add(0, new ViewTask(identifier, objective, ViewTask.State.UNDONE) );
+		int position = 0;
+		undone_tasks_array.add(position, new ViewTask(identifier, objective, ViewTask.State.UNDONE) );
 		undone_tasks_adapter.notifyDataSetChanged();
+
+        /*// Start view moving animation
+		View view_to_expand = undone_tasks_list.getChildAt(position);         
+		Animation expand_anim = AnimationUtils.loadAnimation(this, R.anim.task_expand);
+		view_to_expand.startAnimation(expand_anim);
+
+		// Animate all below
+        for(int task_below_pos = position+1; task_below_pos < undone_tasks_list.getCount(); task_below_pos++){
+            View view_to_move = undone_tasks_list.getChildAt(task_below_pos);
+            Animation move_anim = AnimationUtils.loadAnimation(this, R.anim.task_down);
+            view_to_move.startAnimation(move_anim);
+        }*/
 	}
 
 	@Override
@@ -133,8 +160,32 @@ public class MainActivity extends Activity implements AbstractView {
 	public void removeTaskFromView(int id){
 		for(int i = 0; i < undone_tasks_array.size(); i++){
 			if(undone_tasks_array.get(i).getId() == id){
-				undone_tasks_array.remove(i);
-				undone_tasks_adapter.notifyDataSetChanged();
+                System.out.println("View: Removing task from view...");
+				final int task_id = i;
+				View view_to_remove = undone_tasks_list.getChildAt(i);         // Start view removal animation
+
+				Animation remove_anim = AnimationUtils.loadAnimation(this, R.anim.task_removal);
+				remove_anim.setAnimationListener(new AnimationListener(){
+					@Override
+					public void onAnimationStart(Animation animation) { }
+					@Override
+					public void onAnimationEnd(Animation animation) {
+                        undone_tasks_array.remove(task_id);
+                        undone_tasks_adapter.notifyDataSetChanged();
+                    }
+					@Override
+					public void onAnimationRepeat(Animation animation) { }
+				});
+				view_to_remove.startAnimation(remove_anim);
+				
+				// Start all tasks below up animations
+				
+				for(int task_below_pos = task_id+1; task_below_pos < undone_tasks_list.getCount(); task_below_pos++){
+                    view_to_remove = undone_tasks_list.getChildAt(task_below_pos);
+                    remove_anim = AnimationUtils.loadAnimation(this, R.anim.task_up);
+                    view_to_remove.startAnimation(remove_anim);
+				}
+				
 				return;
 			}
 		}

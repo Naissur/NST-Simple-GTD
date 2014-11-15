@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <integer name = "SimpleGTD.TaskUndone.removal_duration">150</integer>
+    <integer name = "SimpleGTD.TaskUndone.up_duration">120</integer>
+
+    <integer name = "SimpleGTD.TaskUndone.down_duration">1200</integer>
+    <integer name = "SimpleGTD.TaskUndone.expand_duration">1000</integer>
+
     <dimen name="SimpleGTD.ActionBar.height">62dp</dimen>
     <dimen name="SimpleGTD.ActionBar.text_size">32dp</dimen>
 
@@ -32,6 +38,8 @@
     <dimen name="SimpleGTD.TaskUndone.padding_left">12dp</dimen>
     <dimen name="SimpleGTD.TaskUndone.padding_top">8dp</dimen>
     <dimen name="SimpleGTD.TaskUndone.padding_bottom">8dp</dimen>
+
+    <dimen name="SimpleGTD.TaskUndone.DoButton.margin">10dp</dimen>
 
     <dimen name="SimpleGTD.TaskDone.text_size">24dp</dimen>
     <dimen name="SimpleGTD.TaskDone.padding_left">12dp</dimen>
