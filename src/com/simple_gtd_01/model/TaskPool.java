@@ -7,13 +7,10 @@ import android.content.Context;
 public class TaskPool {
 	int maxId;
 	private TreeMap<Integer, Task> tasks;
-	//private TaskDao taskDataSource;
 
 	public TaskPool(Context context){
 		tasks = new TreeMap<Integer, Task>();
 		maxId = 0;
-		//taskDataSource = new TaskDao(context);
-		//taskDataSource.open();
 	}
 	
 
@@ -21,16 +18,12 @@ public class TaskPool {
 		Task task = new Task();
 		maxId++;
 		task.setTaskObjective(objective);
-		task.setTaskState(TaskState.Undone);
+		task.setTaskState(TaskState.UNDONE);
 		task.setTaskId(maxId);
 		tasks.put(task.getId(), task);
 		return task.getId();
 	}
 	
-	public void loadTasksFromDB(){
-		//tasks = taskDataSource.getAllTasks();
-		maxId = tasks.lastKey();
-	}
 	
 	public void insertTask(Task task){
 		tasks.put(task.getId(), task);

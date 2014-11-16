@@ -7,4 +7,5 @@ public interface AbstractModel {
 	public abstract void setTaskAsDone(int id);
 	public abstract void removeTaskFromModel(int id);
 	public abstract void setTaskObjective(int id, String newObjective);
+	public abstract void setTaskAsUndone(int id);
 }
