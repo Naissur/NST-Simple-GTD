@@ -35,7 +35,7 @@ import com.simple_gtd_01.model.AbstractModel;
 import com.simple_gtd_01.model.SimpleGTDModel;
 import com.simple_gtd_01.view.AbstractView;
 
-public class MainActivity extends Activity implements AbstractView {
+public class MainActivity extends AbstractView {
 	
 	private List<ViewTask> m_done_tasks_list;
 	private List<ViewTask> m_undone_tasks_list;
@@ -133,11 +133,10 @@ public class MainActivity extends Activity implements AbstractView {
 		
 		
 		
-		this.addNewTaskToView(1, "Set things to be done");
-		this.addNewTaskToView(2, "Set more things to be done");
-		this.addNewTaskToView(3, "Be ultimately happy for the rest of your life");
-		this.addNewTaskToView(4, "Win.");
-
+		/*m_controller.addTaskDialogExecuted("Set things to be done");
+		m_controller.addTaskDialogExecuted("Set more things to be done");
+		m_controller.addTaskDialogExecuted("Be ultimate");
+		m_controller.addTaskDialogExecuted("Win.");*/
 		
 		m_model = new SimpleGTDModel(this);
 		m_controller = new SimpleGTDController(m_model);
@@ -226,5 +225,4 @@ public class MainActivity extends Activity implements AbstractView {
 	
 	private AbstractModel m_model;
 	private AbstractController m_controller;
-
 }
