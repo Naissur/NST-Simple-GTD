@@ -15,7 +15,7 @@ import com.simple_gtd_01.model.AbstractModel;
 import com.simple_gtd_01.model.SimpleGTDModel;
 import com.simple_gtd_01.view.AbstractView;
 
-public class MainActivity extends Activity implements AbstractView {
+public class MainActivity extends AbstractView {
 	
 	//Activity methods
 
@@ -63,8 +63,8 @@ public class MainActivity extends Activity implements AbstractView {
 	}
 
 	@Override
-	public void addNewTaskToView(String objective) {
-		System.out.println("View: Adding task \""+objective+"\" to view");
+	public void addNewTaskToView(int id, String objective) {
+		System.out.println("View: Adding task \""+objective+"\" with id = "+id+" to view");
 		TextView textview = new TextView(this);
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT);
@@ -86,4 +86,16 @@ public class MainActivity extends Activity implements AbstractView {
 
 	private AbstractModel m_model;
 	private AbstractController m_controller;
+	@Override
+	public void removeTaskFromView(int id) {
+		//TODO
+		
+	}
+
+
+	@Override
+	public void addDoneTaskToView(int identifier, String objective) {
+		// TODO Auto-generated method stub
+		
+	}
 }

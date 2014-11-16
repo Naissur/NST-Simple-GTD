@@ -1,38 +1,38 @@
 package com.simple_gtd_01.model;
 
-import java.util.UUID;
 
 public class Task {
 	private String taskObjective;
-	private UUID id;
+	private int id;
 	private TaskState state;
 
 	//Constructors
 	//Initializing Constructor
-	public Task(String taskObjective, TaskState state){
+	public Task(String taskObjective, int id, TaskState state){
 		this.taskObjective = taskObjective;
-		this.id = UUID.randomUUID();
+		this.id = id;
 		this.state = state;
 	}
-	//Copy Constructor
-	public Task(Task templateTask){
-		this.taskObjective = templateTask.getTaskName();
-		this.id = templateTask.getId();
+	public Task(){
+		
 	}
 	
 	//Setters
-	public void setTaskName(String taskObjective){
+	public void setTaskObjective(String taskObjective){
 		this.taskObjective = taskObjective;
 	}
 	public void setTaskState(TaskState state){
 		this.state = state;
 	}
+	public void setTaskId(int id){
+		this.id = id;
+	}
 	
 	//Getters
-	public String getTaskName(){
+	public String getTaskObjective(){
 		return taskObjective;
 	}
-	public UUID getId(){
+	public int getId(){
 		return id;
 	}
 	public TaskState getTaskState(){
