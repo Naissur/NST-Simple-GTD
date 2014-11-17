@@ -2,15 +2,17 @@ package com.simple_gtd_01.model;
 
 import java.util.TreeMap;
 
-import android.content.Context;
-
 public class TaskPool {
 	int maxId;
 	private TreeMap<Integer, Task> tasks;
 
-	public TaskPool(Context context){
+	public TaskPool(){
 		tasks = new TreeMap<Integer, Task>();
 		maxId = 0;
+	}
+	
+	public TreeMap<Integer, Task> getTasks(){
+		return tasks;
 	}
 	
 
@@ -46,5 +48,17 @@ public class TaskPool {
 	public String getTaskObjective(int id){
 		Task task = tasks.get(id);
 		return task.getTaskObjective();
+	}
+	
+	public void setTasks(TreeMap<Integer, Task> tasks){
+		if(tasks != null){
+			this.tasks = tasks;
+			if(!tasks.isEmpty()){
+				maxId = tasks.lastKey();
+			}
+			else {
+				maxId = 0;
+			}
+		}
 	}
 }

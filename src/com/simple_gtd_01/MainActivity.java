@@ -6,6 +6,7 @@ import java.util.List;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.LayoutTransition;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -127,6 +128,8 @@ public class MainActivity extends AbstractView {
 		m_controller.addTaskDialogExecuted("Win.");*/
 		
 		m_model = new SimpleGTDModel(this);
+		m_model.readTasksFromJson();
+		m_model.sendAllTasksToView();
 		m_controller = new SimpleGTDController(m_model);
 		this.setController(m_controller);
 	}
@@ -209,6 +212,11 @@ public class MainActivity extends AbstractView {
 
 	public void setTaskAsDone(int id) {
 		m_controller.setTaskAsDone(id);
+	}
+	
+	public void onDestroy(){
+		m_model.saveTasksToJson();
+		super.onDestroy();
 	}
 	
 	private AbstractModel m_model;
