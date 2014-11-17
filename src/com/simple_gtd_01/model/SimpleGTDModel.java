@@ -9,6 +9,8 @@ import java.util.TreeMap;
 import android.content.Context;
 import android.content.ContextWrapper;
 
+import com.simple_gtd_01.ViewTask;
+import com.simple_gtd_01.ViewTask.State;
 import com.simple_gtd_01.view.AbstractView;
 
 public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
@@ -41,9 +43,7 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	@Override
 	public void setTaskAsDone(int id) {
 		taskPool.setTaskState(id, TaskState.DONE);
-		String taskObjective = taskPool.getTaskObjective(id);
-		m_view.removeTaskFromView(id);
-		m_view.addDoneTaskToView(id, taskObjective);
+		m_view.setTaskAsDone(id);
 	}
 
 	@Override
@@ -56,15 +56,12 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	public void setTaskObjective(int id, String newObjective) {
 		taskPool.setTaskObjective(id, newObjective);
 		//TODO Call View method!!!!
-		
 	}
 
 	@Override
 	public void setTaskAsUndone(int id) {
 		taskPool.setTaskState(id, TaskState.UNDONE);
-		String taskObjective = taskPool.getTaskObjective(id);
-		m_view.removeTaskFromView(id);
-		m_view.addNewTaskToView(id, taskObjective);
+		m_view.setTaskAsUndone(id);
 	}
 
 	@Override

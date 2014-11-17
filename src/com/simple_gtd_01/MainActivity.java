@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
 import com.simple_gtd_01.R;
+import com.simple_gtd_01.ViewTask.State;
 import com.simple_gtd_01.controller.AbstractController;
 import com.simple_gtd_01.controller.SimpleGTDController;
 import com.simple_gtd_01.model.AbstractModel;
@@ -61,6 +62,7 @@ public class MainActivity extends AbstractView {
 		LayoutTransition transition = m_done_tasks_container.getLayoutTransition();
 
 		//transition.enableTransitionType(LayoutTransition.APPEARING);
+		transition.disableTransitionType(LayoutTransition.APPEARING);
 		transition.enableTransitionType(LayoutTransition.CHANGE_APPEARING);
 		transition.enableTransitionType(LayoutTransition.CHANGE_DISAPPEARING);
 		transition.enableTransitionType(LayoutTransition.DISAPPEARING);
@@ -81,13 +83,13 @@ public class MainActivity extends AbstractView {
 		Animator obj_anim = AnimatorInflater.loadAnimator(this, R.anim.task_undo);
 		transition.setAnimator(LayoutTransition.DISAPPEARING, obj_anim);
 		transition.setDuration(LayoutTransition.DISAPPEARING,
-								getResources().getInteger(R.integer.SimpleGTD_TaskDone_removal_duration));
+								getResources().getInteger(R.integer.SimpleGTD_TaskDone_move_duration));
 		transition.setStartDelay(LayoutTransition.DISAPPEARING, 0);
 
 		transition.setDuration(LayoutTransition.CHANGE_DISAPPEARING, 
 								getResources().getInteger(R.integer.SimpleGTD_TaskDone_collapse_duration));
 		transition.setStartDelay(LayoutTransition.CHANGE_DISAPPEARING,
-								getResources().getInteger(R.integer.SimpleGTD_TaskDone_removal_duration));
+								getResources().getInteger(R.integer.SimpleGTD_TaskDone_move_duration));
 		
 		transition.setDuration(LayoutTransition.CHANGING,
 								getResources().getInteger(R.integer.SimpleGTD_TaskDone_expand_changing_duration));
@@ -100,6 +102,7 @@ public class MainActivity extends AbstractView {
 		transition = m_undone_tasks_container.getLayoutTransition();
 
 		//transition.enableTransitionType(LayoutTransition.APPEARING);
+		transition.disableTransitionType(LayoutTransition.APPEARING);
 		transition.enableTransitionType(LayoutTransition.DISAPPEARING);
 		transition.enableTransitionType(LayoutTransition.CHANGE_APPEARING);
 		transition.enableTransitionType(LayoutTransition.CHANGE_DISAPPEARING);
@@ -120,13 +123,13 @@ public class MainActivity extends AbstractView {
 		obj_anim = AnimatorInflater.loadAnimator(this, R.anim.task_do);
 		transition.setAnimator(LayoutTransition.DISAPPEARING, obj_anim);
 		transition.setDuration(LayoutTransition.DISAPPEARING,
-								getResources().getInteger(R.integer.SimpleGTD_TaskUndone_removal_duration));
+								getResources().getInteger(R.integer.SimpleGTD_TaskUndone_move_duration));
 		transition.setStartDelay(LayoutTransition.DISAPPEARING, 0);
 
 		transition.setDuration(LayoutTransition.CHANGE_DISAPPEARING, 
 								getResources().getInteger(R.integer.SimpleGTD_TaskUndone_collapse_duration));
 		transition.setStartDelay(LayoutTransition.CHANGE_DISAPPEARING,
-								getResources().getInteger(R.integer.SimpleGTD_TaskUndone_removal_duration));
+								getResources().getInteger(R.integer.SimpleGTD_TaskUndone_move_duration));
 		m_undone_tasks_container.setLayoutTransition(transition);
 		
 		
@@ -182,7 +185,7 @@ public class MainActivity extends AbstractView {
                                     	identifier, objective, ViewTask.State.UNDONE){
 			@Override
 			public void onDoneButtonClicked() {
-				setTaskAsDone(this.getId());
+				m_controller.setTaskAsDone(this.getId());
 			};
 		};
 
@@ -199,12 +202,13 @@ public class MainActivity extends AbstractView {
                                     	identifier, objective, ViewTask.State.DONE){
             @Override
             public void onUndoneButtonClicked() {
-                setTaskAsUndone(this.getId());
+                m_controller.setTaskAsUndone(this.getId());
+                System.out.println("View: "+"Child pos = "+getTaskPos(this.getId()));
             };
             
             @Override
             public void onDiscardButtonClicked(){
-            	removeTask(this.getId());
+            	m_controller.removeTask(this.getId());
             };
         };
 
@@ -225,7 +229,16 @@ public class MainActivity extends AbstractView {
 		for(int i = 0; i < m_undone_tasks_list.size(); i++){
 			ViewTask task = m_undone_tasks_list.get(i);
 			if(task.getId() == id){
-				task.getView().setHasTransientState(true);
+				
+				// Need to change disappear animation, and move task to another view
+            	LayoutTransition transition = m_undone_tasks_container.getLayoutTransition();
+                Animator obj_anim = AnimatorInflater.loadAnimator(this, R.anim.task_remove);
+                transition.setAnimator(LayoutTransition.DISAPPEARING, obj_anim);
+                transition.setDuration(LayoutTransition.DISAPPEARING,
+                                        getResources().getInteger(R.integer.SimpleGTD_TaskDone_move_duration));
+                transition.setStartDelay(LayoutTransition.DISAPPEARING, 0);
+                m_undone_tasks_container.setLayoutTransition(transition);	
+				
 				m_undone_tasks_container.removeView(task.getView());
 				m_undone_tasks_list.remove(i);
 				return;
@@ -236,7 +249,15 @@ public class MainActivity extends AbstractView {
 		for(int i = 0; i < m_done_tasks_list.size(); i++){
 			ViewTask task = m_done_tasks_list.get(i);
 			if(task.getId() == id){
-				task.getView().setHasTransientState(true);
+				// Need to change disappear animation, and move task to another view
+            	LayoutTransition transition = m_done_tasks_container.getLayoutTransition();
+                Animator obj_anim = AnimatorInflater.loadAnimator(this, R.anim.task_remove);
+                transition.setAnimator(LayoutTransition.DISAPPEARING, obj_anim);
+                transition.setDuration(LayoutTransition.DISAPPEARING,
+                                        getResources().getInteger(R.integer.SimpleGTD_TaskDone_move_duration));
+                transition.setStartDelay(LayoutTransition.DISAPPEARING, 0);
+                m_done_tasks_container.setLayoutTransition(transition);	
+
 				m_done_tasks_container.removeView(task.getView());
 				m_done_tasks_list.remove(i);
 				return;
@@ -245,17 +266,57 @@ public class MainActivity extends AbstractView {
 	}
 
 	public void setTaskAsDone(int id) {
-		m_controller.setTaskAsDone(id);
+		// search in undone tasks
+        for(int i = 0; i < m_undone_tasks_list.size(); i++){
+            ViewTask task = m_undone_tasks_list.get(i);
+            if(task.getId() == id){
+            	task.setState(State.DONE);
+
+            	// Need to change disappear animation, and move task to another view
+            	LayoutTransition transition = m_undone_tasks_container.getLayoutTransition();
+                Animator obj_anim = AnimatorInflater.loadAnimator(this, R.anim.task_do);
+                transition.setAnimator(LayoutTransition.DISAPPEARING, obj_anim);
+                transition.setDuration(LayoutTransition.DISAPPEARING,
+                                        getResources().getInteger(R.integer.SimpleGTD_TaskDone_move_duration));
+                transition.setStartDelay(LayoutTransition.DISAPPEARING, 0);
+                m_undone_tasks_container.setLayoutTransition(transition);
+                
+                ViewTask task_copy = task;
+                m_undone_tasks_container.removeView(task.getView());
+                m_undone_tasks_list.remove(i);
+                
+                this.addDoneTaskToView(id, task_copy.getObjective());
+                return;
+            }
+        }
 	}
 	
 	public void setTaskAsUndone(int id) {
-		m_controller.setTaskAsUndone(id);
+		// search in undone tasks
+        for(int i = 0; i < m_done_tasks_list.size(); i++){
+            ViewTask task = m_done_tasks_list.get(i);
+            if(task.getId() == id){
+            	task.setState(State.UNDONE);
+
+            	// Need to change disappear animation, and move task to another view
+            	LayoutTransition transition = m_done_tasks_container.getLayoutTransition();
+                Animator obj_anim = AnimatorInflater.loadAnimator(this, R.anim.task_undo);
+                transition.setAnimator(LayoutTransition.DISAPPEARING, obj_anim);
+                transition.setDuration(LayoutTransition.DISAPPEARING,
+                                        getResources().getInteger(R.integer.SimpleGTD_TaskDone_move_duration));
+                transition.setStartDelay(LayoutTransition.DISAPPEARING, 0);
+                m_done_tasks_container.setLayoutTransition(transition);
+                
+                ViewTask task_copy = task;
+
+                m_done_tasks_container.removeView(task.getView());
+                m_done_tasks_list.remove(i);
+                this.addNewTaskToView(id, task_copy.getObjective());
+                return;
+            }
+        }
 	}
 	
-	public void removeTask(int id){
-		m_controller.removeTask(id);
-	}
-
 	public void onDestroy(){
 		m_model.saveTasksToJson();
 		super.onDestroy();
@@ -263,4 +324,46 @@ public class MainActivity extends AbstractView {
 	
 	private AbstractModel m_model;
 	private AbstractController m_controller;
+
+
+	@Override
+	public void setTaskObjective(int id, String new_obj) {
+		// search in undone tasks
+        for(int i = 0; i < m_undone_tasks_list.size(); i++){
+            ViewTask task = m_undone_tasks_list.get(i);
+            if(task.getId() == id){
+            	task.setObjective(new_obj);
+                return;
+            }
+        }
+        
+        // search in done tasks
+        for(int i = 0; i < m_done_tasks_list.size(); i++){
+            ViewTask task = m_done_tasks_list.get(i);
+            if(task.getId() == id){
+                task.setObjective(new_obj);
+                return;
+            }
+        }	
+	}
+
+	@Override
+	public int getTaskPos(int id) {
+		// Undone tasks
+		for(int i = 0; i < m_undone_tasks_list.size(); i++){
+			ViewTask task = m_undone_tasks_list.get(i);
+			if(task.getId() == id){
+				return m_undone_tasks_container.indexOfChild(task.getView());
+			}
+		}
+		// Done tasks
+		for(int i = 0; i < m_done_tasks_list.size(); i++){
+			ViewTask task = m_done_tasks_list.get(i);
+			if(task.getId() == id){
+				return m_done_tasks_container.indexOfChild(task.getView());
+			}
+		}
+		
+		return 0;
+	}
 }

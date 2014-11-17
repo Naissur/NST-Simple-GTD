@@ -3,13 +3,14 @@
 
     <integer name = "SimpleGTD.TaskUndone.adding_duration">0</integer>
     <integer name = "SimpleGTD.TaskUndone.expand_duration">300</integer>
-    <integer name = "SimpleGTD.TaskUndone.removal_duration">400</integer>
+    <integer name = "SimpleGTD.TaskUndone.move_duration">300</integer>
     <integer name = "SimpleGTD.TaskUndone.collapse_duration">300</integer>
     <integer name = "SimpleGTD.TaskUndone.expand_changing_duration">200</integer>
+    <integer name = "SimpleGTD.TaskUndone.remove_duration">300</integer>
 
     <integer name = "SimpleGTD.TaskDone.adding_duration">0</integer>
     <integer name = "SimpleGTD.TaskDone.expand_duration">300</integer>
-    <integer name = "SimpleGTD.TaskDone.removal_duration">300</integer>
+    <integer name = "SimpleGTD.TaskDone.move_duration">300</integer>
     <integer name = "SimpleGTD.TaskDone.collapse_duration">300</integer>
     <integer name = "SimpleGTD.TaskDone.expand_changing_duration">200</integer>
 

@@ -175,5 +175,17 @@ public class ViewTask {
 	
 	public void setObjective(String obj){
 		m_objective = obj;
-	}
+		switch(m_state){
+            case DONE:{
+                TextView text_view = (TextView)m_view.findViewById(R.id.SimpleGTD_TaskDone_TextView);
+                text_view.setText(obj);
+                break;
+            }
+            case UNDONE:{
+                TextView text_view = (TextView)m_view.findViewById(R.id.SimpleGTD_TaskUndone_TextView);
+                text_view.setText(obj);
+                break;
+            }
+        }
+    }
 }
