@@ -31,6 +31,10 @@ public class ViewTask {
 		System.out.println("Clicked set undone button in some done task");
 	}
 	
+	public void onDiscardButtonClicked(){
+		System.out.println("Clicked discard button in some undone task");
+	}
+	
 	public View createTaskView(Context context,int width, int height){
 		
 		View res_view = null;
@@ -90,6 +94,15 @@ public class ViewTask {
 					@Override
 					public void onClick(View v) {
 						onUndoneButtonClicked();
+					}
+                });
+                
+                ImageButton task_set_discard_button = (ImageButton) res_view.findViewById(
+                		R.id.SimpleGTD_TaskDone_ControlBar_DiscardButton);
+                task_set_discard_button.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						onDiscardButtonClicked();
 					}
                 });
 

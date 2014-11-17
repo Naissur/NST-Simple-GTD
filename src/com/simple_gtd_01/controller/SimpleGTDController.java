@@ -33,4 +33,9 @@ public class SimpleGTDController implements AbstractController {
 	
 	private AbstractModel m_model;
 
+	@Override
+	public void removeTask(int id) {
+		m_model.removeTaskFromModel(id);
+	}
+
 }

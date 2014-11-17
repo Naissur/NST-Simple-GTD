@@ -1,16 +1,30 @@
 package com.simple_gtd_01.model;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.Map;
+import java.util.TreeMap;
+
+import android.content.Context;
+import android.content.ContextWrapper;
+
 import com.simple_gtd_01.view.AbstractView;
 
-public class SimpleGTDModel implements AbstractModel {
+public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
+	
+	public static final String JSON_DATA_FILENAME = "tasksJson";
 	
 	private TaskPool taskPool;
 	private AbstractView m_view;
+	private JsonTaskWorker json;
 
 	public SimpleGTDModel(AbstractView view) {
-		System.out.println("Model: Simple GTD Model initialized");
+		super(view);
 		m_view = view;
-		taskPool = new TaskPool(m_view);
+		json = new JsonTaskWorker();
+		taskPool = new TaskPool();
+		System.out.println("Model: Simple GTD Model initialized");
 	}
 	
 	public AbstractView getView(){
@@ -26,25 +40,16 @@ public class SimpleGTDModel implements AbstractModel {
 
 	@Override
 	public void setTaskAsDone(int id) {
-		taskPool.setTaskState(id, TaskState.Done);
+		taskPool.setTaskState(id, TaskState.DONE);
 		String taskObjective = taskPool.getTaskObjective(id);
 		m_view.removeTaskFromView(id);
 		m_view.addDoneTaskToView(id, taskObjective);
 	}
 
 	@Override
-	public void setTaskAsUndone(int id) {
-		taskPool.setTaskState(id, TaskState.Undone);
-		String taskObjective = taskPool.getTaskObjective(id);
-		m_view.removeTaskFromView(id);
-		m_view.addNewTaskToView(id, taskObjective);
-	}
-
-	@Override
 	public void removeTaskFromModel(int id) {
 		taskPool.removeTask(id);
 		m_view.removeTaskFromView(id);
-		
 	}
 
 	@Override
@@ -53,6 +58,61 @@ public class SimpleGTDModel implements AbstractModel {
 		//TODO Call View method!!!!
 		
 	}
-	
-	
+
+	@Override
+	public void setTaskAsUndone(int id) {
+		taskPool.setTaskState(id, TaskState.UNDONE);
+		String taskObjective = taskPool.getTaskObjective(id);
+		m_view.removeTaskFromView(id);
+		m_view.addNewTaskToView(id, taskObjective);
+	}
+
+	@Override
+	public void saveTasksToJson() {
+		try {
+			FileOutputStream fos = openFileOutput(JSON_DATA_FILENAME, Context.MODE_PRIVATE);
+			json.writeToJson(fos, taskPool.getTasks());
+		} catch (Exception e) {
+			System.out.println("Exception opening file");
+			System.out.println(e.toString());
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void readTasksFromJson() {
+		FileInputStream fis = null;
+		boolean doesFileExists = false;
+		String[] files = fileList();
+		for(String s : files){
+			if(s.equals(JSON_DATA_FILENAME)){
+				doesFileExists = true;
+			}
+		}
+		if(doesFileExists){
+			try {
+				fis = openFileInput(JSON_DATA_FILENAME);
+				TreeMap<Integer, Task> tasksMap = json.readFromJson(fis);
+				taskPool.setTasks(tasksMap);
+			} catch (FileNotFoundException e) {
+				System.out.println("Exception in opening file");
+				System.out.println(e.toString());
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void sendAllTasksToView() {
+		TreeMap<Integer, Task> tasks = taskPool.getTasks();
+		for (Map.Entry<Integer, Task> task : tasks.entrySet()){
+			if (task.getValue().getTaskState() == TaskState.DONE){
+				m_view.addDoneTaskToView(task.getKey(), task.getValue().getTaskObjective());
+			}
+			else {
+				m_view.addNewTaskToView(task.getKey(), task.getValue().getTaskObjective());
+			}
+		}
+	}
 }

@@ -7,4 +7,5 @@ public interface AbstractController {
 	public AbstractModel getModel();
 	public void setTaskAsDone(int id);
 	public void setTaskAsUndone(int id);
+	public void removeTask(int id);
 }
