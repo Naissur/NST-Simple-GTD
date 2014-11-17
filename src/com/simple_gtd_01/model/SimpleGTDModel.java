@@ -33,6 +33,14 @@ public class SimpleGTDModel implements AbstractModel {
 	}
 
 	@Override
+	public void setTaskAsUndone(int id) {
+		taskPool.setTaskState(id, TaskState.Undone);
+		String taskObjective = taskPool.getTaskObjective(id);
+		m_view.removeTaskFromView(id);
+		m_view.addNewTaskToView(id, taskObjective);
+	}
+
+	@Override
 	public void removeTaskFromModel(int id) {
 		taskPool.removeTask(id);
 		m_view.removeTaskFromView(id);

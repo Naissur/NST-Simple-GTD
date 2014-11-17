@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    android:id="@+id/SimpleGTD.TaskDoneTemplate"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-
-    android:orientation = "horizontal"
+    android:id="@+id/SimpleGTD.TaskDone"
     android:background="@drawable/simplegtd_task_done_background"
-    android:layout_width = "match_parent"
-    android:layout_height = "match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
 
     <TextView
-        android:id="@+id/SimpleGTD.TaskDoneTemplate.TextView"
+        android:id="@+id/SimpleGTD.TaskDone.TextView"
         android:text="@string/SimpleGTD.TaskDone.default_text"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="left"
+        android:layout_width="match_parent"
         style="@style/SimpleGTD.TaskDone.style" />
+
+    <RelativeLayout
+		android:id="@+id/SimpleGTD.TaskDone.ControlBar"
+		android:background="@drawable/simplegtd_task_done_controlbar_background"
+        android:orientation = "horizontal"
+        android:layout_width = "match_parent"
+        android:layout_height = "0dp"
+        android:padding="0dp">
+
+        <ImageButton 
+            android:id="@+id/SimpleGTD.TaskDone.ControlBar.UndoButton"
+            android:background="@drawable/simplegtd_task_done_undo_button"
+            android:layout_margin="@dimen/SimpleGTD.TaskDone.UndoButton.margin"
+            android:clickable="true"
+            android:scaleType="center"
+            android:src="@drawable/simplegtd_task_undo_icon"
+            android:contentDescription="Make task done"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+        />
+        <ImageButton 
+            android:id="@+id/SimpleGTD.TaskDone.ControlBar.DiscardButton"
+            android:background="@drawable/simplegtd_task_done_discard_button"
+            android:layout_margin="@dimen/SimpleGTD.TaskDone.DiscardButton.margin"
+            android:clickable="true"
+            android:scaleType="center"
+            android:src="@drawable/simplegtd_task_discard_icon"
+            android:contentDescription="Edit task "
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/SimpleGTD.TaskDone.ControlBar.UndoButton"
+        /> 
+
+    </RelativeLayout>
+
 </LinearLayout>

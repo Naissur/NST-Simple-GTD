@@ -21,6 +21,7 @@
         <LinearLayout
             android:focusable="false"
             android:orientation="vertical"
+            android:background="@color/SimpleGTD.UndoneList.background_color"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" >
 
@@ -42,7 +43,15 @@
                     android:id="@+id/SimpleGTD.UndoneTasksContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:animateLayoutChanges="true" />
+                    android:animateLayoutChanges="true" >
+
+
+                    <!-- add to get additional space below tasks TODO unhardcore height! -->
+                    <View 	
+                        android:layout_height="200dp"
+                        android:layout_width="match_parent"/>
+              	
+                </LinearLayout>
 
             </ScrollView>
 
@@ -52,28 +61,35 @@
                 android:focusable="false"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
+                android:background="@color/SimpleGTD.DoneList.background_color"
                 android:layout_height="match_parent" > 
 
-            <Button
-                android:text="@string/SimpleGTD.Done.text"
-                android:layout_width="@dimen/SimpleGTD.Done.width"
-                android:layout_height="@dimen/SimpleGTD.Done.height"
-                android:background="@drawable/simplegtd_done_background"
-                style="@style/SimpleGTD.Done.text_appearance"/>
+                <Button
+                    android:text="@string/SimpleGTD.Done.text"
+                    android:layout_width="@dimen/SimpleGTD.Done.width"
+                    android:layout_height="@dimen/SimpleGTD.Done.height"
+                    android:background="@drawable/simplegtd_done_background"
+                    style="@style/SimpleGTD.Done.text_appearance"/>
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:focusable="false"
-                    android:orientation="vertical"
-                    android:id="@+id/SimpleGTD.DoneTasksContainer"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
-                    android:animateLayoutChanges="true"/>
-                
-            </ScrollView>
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:focusable="false"
+                        android:orientation="vertical"
+                        android:id="@+id/SimpleGTD.DoneTasksContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" 
+                        android:animateLayoutChanges="true">
+
+                        <!--  Extra space below  -->
+                        <View 	
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"/>
+                    </LinearLayout>
+                    
+                </ScrollView>
 
         </LinearLayout>
     </LinearLayout>

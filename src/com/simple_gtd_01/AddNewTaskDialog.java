@@ -29,8 +29,8 @@ public class AddNewTaskDialog extends Dialog implements OnClickListener {
 		View neg_btn = this.findViewById(R.id.SimpleGTD_AddTaskDialog_negative_button);
         EditText ed_text = (EditText)findViewById(R.id.SimpleGTD_AddTaskDialog_edit_text);
         ed_text.requestFocus();
-        //InputMethodManager imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE); // Open keyboard
-        //imm.showSoftInput(ed_text, InputMethodManager.SHOW_IMPLICIT);
+        
+        // Show keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
 		final Dialog dialog = (Dialog)this;
@@ -64,6 +64,8 @@ public class AddNewTaskDialog extends Dialog implements OnClickListener {
 
 	@Override
 	public void onStop(){
+		// Hide keyboard
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 		super.onStop();
 	}
 }

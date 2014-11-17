@@ -3,7 +3,7 @@
     <item android:state_pressed="true" >
         <shape>
             <solid
-                android:color="@color/SimpleGTD.TaskUndone.ControlBar.DoButton.pressed_color" />
+                android:color="@color/SimpleGTD.TaskDone.UndoButton.pressed_color" />
         </shape>
     </item>
     <item>    <!-- Render by default -->

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
@@ -25,6 +27,10 @@ public class ViewTask {
 		System.out.println("Clicked set done button in some undone task");
 	}
 	
+	public void onUndoneButtonClicked(){
+		System.out.println("Clicked set undone button in some done task");
+	}
+	
 	public View createTaskView(Context context,int width, int height){
 		
 		View res_view = null;
@@ -33,17 +39,37 @@ public class ViewTask {
                 res_view = ((LayoutInflater)context.getSystemService(
                         Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.task_undone_template, null);
                 
-                TextView task_text = (TextView) res_view.findViewById(R.id.SimpleGTD_TaskUndoneTemplate_TextView);
+                final RelativeLayout control_bar = (RelativeLayout)res_view.findViewById(R.id.SimpleGTD_TaskUndone_ControlBar);
+                
+                TextView task_text = (TextView) res_view.findViewById(R.id.SimpleGTD_TaskUndone_TextView);
                 task_text.setText(m_objective);
                 
+                // Expand call listener
+                task_text.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						ViewGroup.LayoutParams params = control_bar.getLayoutParams();
+						if(params.height == LayoutParams.WRAP_CONTENT){
+                            params.height = 0;
+						}else
+						if(params.height == 0){
+                            params.height = LayoutParams.WRAP_CONTENT;
+						}
+
+						control_bar.setLayoutParams(params);
+					}
+                });
+                
                 ImageButton task_set_done_button = (ImageButton) res_view.findViewById(
-                		R.id.SimpleGTD_TaskUndoneTemplate_DoButton);
+                		R.id.SimpleGTD_TaskUndone_ControlBar_DoButton);
                 task_set_done_button.setOnClickListener(new OnClickListener(){
 					@Override
 					public void onClick(View v) {
 						onDoneButtonClicked();
 					}
                 });
+                
+                
 
                 LayoutParams params = new LayoutParams(width,height);
                 res_view.setLayoutParams(params);
@@ -55,8 +81,35 @@ public class ViewTask {
                 res_view = ((LayoutInflater)context.getSystemService(
                         Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.task_done_template, null);
                 
-                TextView task_text = (TextView) res_view.findViewById(R.id.SimpleGTD_TaskDoneTemplate_TextView);
+                TextView task_text = (TextView) res_view.findViewById(R.id.SimpleGTD_TaskDone_TextView);
                 task_text.setText(m_objective);
+
+                ImageButton task_set_undone_button = (ImageButton) res_view.findViewById(
+                		R.id.SimpleGTD_TaskDone_ControlBar_UndoButton);
+                task_set_undone_button.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						onUndoneButtonClicked();
+					}
+                });
+
+                final RelativeLayout control_bar = (RelativeLayout)res_view.findViewById(R.id.SimpleGTD_TaskDone_ControlBar);
+
+                // Expand call listener
+                task_text.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						ViewGroup.LayoutParams params = control_bar.getLayoutParams();
+						if(params.height == LayoutParams.WRAP_CONTENT){
+                            params.height = 0;
+						}else
+						if(params.height == 0){
+                            params.height = LayoutParams.WRAP_CONTENT;
+						}
+
+						control_bar.setLayoutParams(params);
+					}
+                });
 
                 LayoutParams params = new LayoutParams(width,height);
                 res_view.setLayoutParams(params);

@@ -5,11 +5,13 @@
     <integer name = "SimpleGTD.TaskUndone.expand_duration">300</integer>
     <integer name = "SimpleGTD.TaskUndone.removal_duration">400</integer>
     <integer name = "SimpleGTD.TaskUndone.collapse_duration">300</integer>
+    <integer name = "SimpleGTD.TaskUndone.expand_changing_duration">200</integer>
 
     <integer name = "SimpleGTD.TaskDone.adding_duration">0</integer>
     <integer name = "SimpleGTD.TaskDone.expand_duration">300</integer>
     <integer name = "SimpleGTD.TaskDone.removal_duration">300</integer>
     <integer name = "SimpleGTD.TaskDone.collapse_duration">300</integer>
+    <integer name = "SimpleGTD.TaskDone.expand_changing_duration">200</integer>
 
     <dimen name="SimpleGTD.ActionBar.height">62dp</dimen>
     <dimen name="SimpleGTD.ActionBar.text_size">32dp</dimen>
@@ -43,13 +45,26 @@
     <dimen name="SimpleGTD.TaskUndone.padding_top">8dp</dimen>
     <dimen name="SimpleGTD.TaskUndone.padding_bottom">8dp</dimen>
 
-    <dimen name="SimpleGTD.TaskDone.text_size">24dp</dimen>
-    <dimen name="SimpleGTD.TaskDone.padding_left">12dp</dimen>
-    <dimen name="SimpleGTD.TaskDone.padding_top">8dp</dimen>
-    <dimen name="SimpleGTD.TaskDone.padding_bottom">8dp</dimen>
-    
     <dimen name="SimpleGTD.TaskUndone.DoButton.height">-2dp</dimen>
     <dimen name="SimpleGTD.TaskUndone.DoButton.width">-2dp</dimen>
     <dimen name="SimpleGTD.TaskUndone.DoButton.margin">0dp</dimen>
 
+    <dimen name="SimpleGTD.TaskUndone.EditButton.height">-2dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.EditButton.width">-2dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.EditButton.margin">0dp</dimen>
+
+
+    <dimen name="SimpleGTD.TaskDone.text_size">24dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.padding_left">12dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.padding_top">8dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.padding_bottom">8dp</dimen>
+
+    <dimen name="SimpleGTD.TaskDone.UndoButton.height">-2dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.UndoButton.width">-2dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.UndoButton.margin">0dp</dimen>
+
+    <dimen name="SimpleGTD.TaskDone.DiscardButton.height">-2dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.DiscardButton.width">-2dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.DiscardButton.margin">0dp</dimen>
+    
 </resources>
