@@ -15,8 +15,12 @@ public class SimpleGTDController implements AbstractController {
 		m_model.addNewTaskToModel(task_objective);
 	}
 
+	public void editTaskDialogExecuted(int id, String new_objective){
+		m_model.modifyTask(id, new_objective);
+	}
+
 	public void setModel(AbstractModel model) {
-		
+		m_model = model;
 	}
 	
 	public void setTaskAsDone(int id){

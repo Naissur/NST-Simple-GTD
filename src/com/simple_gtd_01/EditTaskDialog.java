@@ -12,16 +12,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 
-public class AddNewTaskDialog extends Dialog implements OnClickListener {
+public class EditTaskDialog extends Dialog implements OnClickListener {
 
+	private ViewTask m_task;
 	private EditText m_ed_text;
+	
+	public ViewTask getTask(){
+		return m_task;
+	}
 	
 	public String getObjective(){
 		return m_ed_text.getText().toString();
 	}
 	
-	public AddNewTaskDialog(Context context, MainActivity m_activity) {
+	public EditTaskDialog(Context context, MainActivity m_activity, ViewTask task) {
 		super(context, R.style.SimpleGTD_DialogTheme);
+		m_task = task;
 	}
 	
 	public void onSuccess(){
@@ -31,15 +37,18 @@ public class AddNewTaskDialog extends Dialog implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.add_new_task_dialog);
-		View pos_btn = this.findViewById(R.id.SimpleGTD_AddTaskDialog_PositiveButton);
-		View neg_btn = this.findViewById(R.id.SimpleGTD_AddTaskDialog_NegativeButton);
-        EditText ed_text = (EditText)findViewById(R.id.SimpleGTD_AddTaskDialog_edit_text);
-        m_ed_text = ed_text;
+	    setContentView(R.layout.edit_task_dialog);
+		View pos_btn = this.findViewById(R.id.SimpleGTD_EditTaskDialog_PositiveButton);
+		View neg_btn = this.findViewById(R.id.SimpleGTD_EditTaskDialog_NegativeButton);
+		EditText ed_text = (EditText) this.findViewById(R.id.SimpleGTD_EditTaskDialog_ObjectiveEditText);
+		m_ed_text = ed_text;
+		m_ed_text.setText(m_task.getObjective());
+
         ed_text.requestFocus();
         
         // Show keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        
 
 		final Dialog dialog = (Dialog)this;
 
@@ -54,7 +63,7 @@ public class AddNewTaskDialog extends Dialog implements OnClickListener {
 				dialog.cancel();
 			}
 		});
-	    this.setTitle(R.string.SimpleGTD_AddTaskDialog_title);
+	    this.setTitle(R.string.SimpleGTD_EditTaskDialog_title);
 	    
 	    
 	}
@@ -63,7 +72,7 @@ public class AddNewTaskDialog extends Dialog implements OnClickListener {
     public void onClick(View v) {
 		System.out.println("Clicked!");
       	switch (v.getId()) {
-      		case R.id.SimpleGTD_AddTaskDialog_NegativeButton:
+      		case R.id.SimpleGTD_EditTaskDialog_NegativeButton:
       			this.cancel();
       		}
 	}

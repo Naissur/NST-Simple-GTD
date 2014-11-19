@@ -11,7 +11,7 @@ public abstract class AbstractView extends Activity {
 	public abstract void addNewTaskToView(int identifier, String objective);
 	public abstract void addDoneTaskToView(int identifier, String objective);
 	public abstract void removeTaskFromView(int id);
-	public abstract void setTaskObjective(int id, String new_obj);
+	public abstract void modifyTask(int id, String new_obj);
 	public abstract void setTaskAsUndone(int id);
 	public abstract void setTaskAsDone(int id);
 	public abstract int getTaskPos(int id);

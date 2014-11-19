@@ -53,9 +53,11 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	}
 
 	@Override
-	public void setTaskObjective(int id, String newObjective) {
-		taskPool.setTaskObjective(id, newObjective);
-		//TODO Call View method!!!!
+	public void modifyTask(int id, String newObjective) {
+		if(newObjective != null){
+            taskPool.setTaskObjective(id, newObjective);
+            m_view.modifyTask(id, newObjective);
+		}
 	}
 
 	@Override
@@ -112,4 +114,6 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 			}
 		}
 	}
+		
+	
 }

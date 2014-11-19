@@ -27,6 +27,10 @@ public class ViewTask {
 		System.out.println("Clicked set done button in some undone task");
 	}
 	
+	public void onEditButtonClicked(){
+		System.out.println("Clicked edit button in some undone task");
+	}
+	
 	public void onUndoneButtonClicked(){
 		System.out.println("Clicked set undone button in some done task");
 	}
@@ -64,6 +68,7 @@ public class ViewTask {
 					}
                 });
                 
+                // Done listener
                 ImageButton task_set_done_button = (ImageButton) res_view.findViewById(
                 		R.id.SimpleGTD_TaskUndone_ControlBar_DoButton);
                 task_set_done_button.setOnClickListener(new OnClickListener(){
@@ -73,7 +78,15 @@ public class ViewTask {
 					}
                 });
                 
-                
+                //Edit listener
+                ImageButton task_edit_button = (ImageButton) res_view.findViewById(
+                		R.id.SimpleGTD_TaskUndone_ControlBar_EditButton);
+                task_edit_button.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						onEditButtonClicked();
+					}
+                });
 
                 LayoutParams params = new LayoutParams(width,height);
                 res_view.setLayoutParams(params);

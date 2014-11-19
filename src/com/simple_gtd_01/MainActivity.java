@@ -7,13 +7,20 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.LayoutTransition;
 import android.content.Context;
+import android.animation.ObjectAnimator;
+import android.animation.TimeInterpolator;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
@@ -39,6 +46,25 @@ public class MainActivity extends AbstractView {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);     //  Fixed Portrait orientation
 		setContentView(R.layout.activity_main);
+		
+		Button todo_btn = (Button)this.findViewById(R.id.SimpleGTD_Todo);
+		
+		final MainActivity m_activity = this;
+		
+		
+		// set up todo button listener
+		todo_btn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				final AddNewTaskDialog add_dialog = new AddNewTaskDialog(m_activity, m_activity){
+					@Override
+					public void onSuccess() {
+						m_controller.addTaskDialogExecuted(getObjective());
+					}
+				};
+				add_dialog.show();
+			}
+		});
 		
 		Point size = new Point();
         getWindowManager().getDefaultDisplay().getSize(size);
@@ -181,11 +207,24 @@ public class MainActivity extends AbstractView {
 	@Override
 	public void addNewTaskToView(int identifier, String objective) {
 		System.out.println("View: Adding task \""+objective+"\" to view");
+		final MainActivity _context = this;
 		ViewTask task = new ViewTask(this, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT,
                                     	identifier, objective, ViewTask.State.UNDONE){
 			@Override
 			public void onDoneButtonClicked() {
 				m_controller.setTaskAsDone(this.getId());
+                System.out.println("View: "+"Child pos = "+getTaskPos(this.getId()));
+			};
+			
+			@Override
+			public void onEditButtonClicked(){
+				EditTaskDialog edit_dialog = new EditTaskDialog(_context, _context, this){
+					@Override
+					public void onSuccess() {
+						m_controller.editTaskDialogExecuted(getTask().getId(), getObjective());
+                    }
+				};
+				edit_dialog.show();
 			};
 		};
 
@@ -218,10 +257,16 @@ public class MainActivity extends AbstractView {
 		m_done_tasks_container.addView(task_view, 0);
 	}
 	
-	public void onToDoButtonClicked(View v){
-		AddNewTaskDialog dialog = new AddNewTaskDialog(this, this);
+	/*public void onToDoButtonClicked(View v){
+		AddNewTaskDialog dialog = new AddNewTaskDialog(this, this){
+			@Override
+			public void onStop(){
+				m_controller.addTaskDialogExecuted(getObjective());
+				super.onStop();
+			};
+		};
 		dialog.show();
-	}
+	}*/
 	
 	@Override
 	public void removeTaskFromView(int id){
@@ -325,14 +370,15 @@ public class MainActivity extends AbstractView {
 	private AbstractModel m_model;
 	private AbstractController m_controller;
 
-
 	@Override
-	public void setTaskObjective(int id, String new_obj) {
+	public void modifyTask(int id, String new_obj) {
 		// search in undone tasks
         for(int i = 0; i < m_undone_tasks_list.size(); i++){
             ViewTask task = m_undone_tasks_list.get(i);
             if(task.getId() == id){
-            	task.setObjective(new_obj);
+            	if(new_obj != null){
+                    task.setObjective(new_obj);
+            	}
                 return;
             }
         }
@@ -341,7 +387,9 @@ public class MainActivity extends AbstractView {
         for(int i = 0; i < m_done_tasks_list.size(); i++){
             ViewTask task = m_done_tasks_list.get(i);
             if(task.getId() == id){
-                task.setObjective(new_obj);
+            	if(new_obj != null){
+                    task.setObjective(new_obj);
+            	}
                 return;
             }
         }	
