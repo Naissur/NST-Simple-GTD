@@ -25,6 +25,18 @@ public class ViewTask {
 		System.out.println("Clicked set done button in some undone task");
 	}
 	
+	public void onEditButtonClicked(){
+		System.out.println("Clicked edit button in some undone task");
+	}
+	
+	public void onUndoneButtonClicked(){
+		System.out.println("Clicked set undone button in some done task");
+	}
+	
+	public void onDiscardButtonClicked(){
+		System.out.println("Clicked discard button in some undone task");
+	}
+	
 	public View createTaskView(Context context,int width, int height){
 		
 		View res_view = null;
@@ -36,6 +48,23 @@ public class ViewTask {
                 TextView task_text = (TextView) res_view.findViewById(R.id.SimpleGTD_TaskUndoneTemplate_TextView);
                 task_text.setText(m_objective);
                 
+                // Expand call listener
+                task_text.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						ViewGroup.LayoutParams params = control_bar.getLayoutParams();
+						if(params.height == LayoutParams.WRAP_CONTENT){
+                            params.height = 0;
+						}else
+						if(params.height == 0){
+                            params.height = LayoutParams.WRAP_CONTENT;
+						}
+
+						control_bar.setLayoutParams(params);
+					}
+                });
+                
+                // Done listener
                 ImageButton task_set_done_button = (ImageButton) res_view.findViewById(
                 		R.id.SimpleGTD_TaskUndoneTemplate_DoButton);
                 task_set_done_button.setOnClickListener(new OnClickListener(){
@@ -44,6 +73,17 @@ public class ViewTask {
 						onDoneButtonClicked();
 					}
                 });
+                
+                //Edit listener
+                ImageButton task_edit_button = (ImageButton) res_view.findViewById(
+                		R.id.SimpleGTD_TaskUndone_ControlBar_EditButton);
+                task_edit_button.setOnClickListener(new OnClickListener(){
+					@Override
+					public void onClick(View v) {
+						onEditButtonClicked();
+					}
+                });
+                
 
                 LayoutParams params = new LayoutParams(width,height);
                 res_view.setLayoutParams(params);

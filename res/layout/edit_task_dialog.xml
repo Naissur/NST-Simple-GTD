@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android='http://schemas.android.com/apk/res/android'
+    xmlns:tools='http://schemas.android.com/tools'
+    android:layout_width='match_parent'
+    android:layout_height='match_parent' 
+    android:orientation="vertical">
+
+
+    <EditText 
+        android:id="@+id/SimpleGTD.EditTaskDialog.ObjectiveEditText"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/SimpleGTD.EditTaskDialog.ObjectiveEditText.width"
+        android:layout_height="wrap_content"
+        android:hint="@string/SimpleGTD.EditTaskDialog.ObjectiveEditText.hint"
+        android:text=""
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <Button
+                android:id='@+id/SimpleGTD.EditTaskDialog.NegativeButton'
+                android:layout_width='@dimen/SimpleGTD.EditTaskDialog.NegativeButton.width'
+                android:layout_height='@dimen/SimpleGTD.EditTaskDialog.NegativeButton.height'
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/simplegtd_button_background"
+                style="@style/SimpleGTD.EditTaskDialog.button_style"
+                android:text='@string/SimpleGTD.EditTaskDialog.NegativeButton.text' />
+
+            <Button
+                android:id='@+id/SimpleGTD.EditTaskDialog.PositiveButton'
+                android:layout_width='@dimen/SimpleGTD.EditTaskDialog.PositiveButton.width'
+                android:layout_height='@dimen/SimpleGTD.EditTaskDialog.PositiveButton.height'
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/simplegtd_button_background"
+                style="@style/SimpleGTD.EditTaskDialog.button_style"
+                android:text='@string/SimpleGTD.EditTaskDialog.PositiveButton.text' />
+
+    </LinearLayout>
+    
+</LinearLayout>

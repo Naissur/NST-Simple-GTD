@@ -17,18 +17,23 @@
     <dimen name="SimpleGTD.activity_horizontal_margin">0dp</dimen>
     <dimen name="SimpleGTD.activity_vertical_margin">0dp</dimen>
     
-    <dimen name="SimpleGTD.AddTaskDialog.edit_text_width">-1dp</dimen>
-    <dimen name="SimpleGTD.AddTaskDialog.edit_text_height">48dp</dimen>
-    
     <dimen name="SimpleGTD.Button.text_size">22dp</dimen>
     <dimen name="SimpleGTD.Button.margin">4dp</dimen>
     <dimen name="SimpleGTD.Button.border_width">1px</dimen>
 
-    <dimen name="SimpleGTD.AddTaskDialog.positive_button_width">-1dp</dimen>
-    <dimen name="SimpleGTD.AddTaskDialog.positive_button_height">52dp</dimen>
-
-    <dimen name="SimpleGTD.AddTaskDialog.negative_button_width">-1dp</dimen>
-    <dimen name="SimpleGTD.AddTaskDialog.negative_button_height">52dp</dimen>
+    <dimen name="SimpleGTD.AddTaskDialog.edit_text_width">-1dp</dimen>
+    <dimen name="SimpleGTD.AddTaskDialog.edit_text_height">48dp</dimen>
+    <dimen name="SimpleGTD.AddTaskDialog.PositiveButton.width">-1dp</dimen>
+    <dimen name="SimpleGTD.AddTaskDialog.PositiveButton.height">52dp</dimen>
+    <dimen name="SimpleGTD.AddTaskDialog.NegativeButton.width">-1dp</dimen>
+    <dimen name="SimpleGTD.AddTaskDialog.NegativeButton.height">52dp</dimen>
+    
+    <dimen name="SimpleGTD.EditTaskDialog.ObjectiveEditText.width">-1dp</dimen>
+    <dimen name="SimpleGTD.EditTaskDialog.ObjectiveEditText.height">48dp</dimen>
+    <dimen name="SimpleGTD.EditTaskDialog.PositiveButton.width">-1dp</dimen>
+    <dimen name="SimpleGTD.EditTaskDialog.PositiveButton.height">52dp</dimen>
+    <dimen name="SimpleGTD.EditTaskDialog.NegativeButton.width">-1dp</dimen>
+    <dimen name="SimpleGTD.EditTaskDialog.NegativeButton.height">52dp</dimen>
     
     <dimen name="SimpleGTD.Todo.text_size">32dp</dimen>
     <dimen name="SimpleGTD.Todo.width">-1dp</dimen> <!-- -1dp = Match parent -->

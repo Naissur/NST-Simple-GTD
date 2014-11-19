@@ -40,9 +40,30 @@ public class SimpleGTDModel implements AbstractModel {
 	}
 
 	@Override
-	public void setTaskObjective(int id, String newObjective) {
-		taskPool.setTaskObjective(id, newObjective);
-		//TODO Call View method!!!!
+	public void modifyTask(int id, String newObjective) {
+		if(newObjective != null){
+            taskPool.setTaskObjective(id, newObjective);
+            m_view.modifyTask(id, newObjective);
+		}
+	}
+
+	@Override
+	public void setTaskAsUndone(int id) {
+		taskPool.setTaskState(id, TaskState.UNDONE);
+		m_view.setTaskAsUndone(id);
+	}
+
+	@Override
+	public void saveTasksToJson() {
+		try {
+			FileOutputStream fos = openFileOutput(JSON_DATA_FILENAME, Context.MODE_PRIVATE);
+			json.writeToJson(fos, taskPool.getTasks());
+		} catch (Exception e) {
+			System.out.println("Exception opening file");
+			System.out.println(e.toString());
+			e.printStackTrace();
+		}
+>>>>>>> Stashed changes
 		
 	}
 	

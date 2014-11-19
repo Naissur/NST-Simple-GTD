@@ -10,11 +10,16 @@
     <string name="SimpleGTD.Done.text">Done</string>
 
    	<string name="SimpleGTD.AddTaskDialog.title">Add new task</string>
-   	<string name="SimpleGTD.AddTaskDialog.positive_button_text">OK</string>
-   	<string name="SimpleGTD.AddTaskDialog.negative_button_text">Cancel</string>
-
+   	<string name="SimpleGTD.AddTaskDialog.PositiveButton.text">OK</string>
+   	<string name="SimpleGTD.AddTaskDialog.NegativeButton.text">Cancel</string>
    	<string name="SimpleGTD.AddTaskDialog.hint">Task objective</string>
    	<string name="SimpleGTD.AddTaskDialog.text"></string>
+   	
+   	<string name="SimpleGTD.EditTaskDialog.title">Edit task</string>
+   	<string name="SimpleGTD.EditTaskDialog.PositiveButton.text">OK</string>
+   	<string name="SimpleGTD.EditTaskDialog.NegativeButton.text">Cancel</string>
+   	<string name="SimpleGTD.EditTaskDialog.ObjectiveEditText.hint">New objective</string>
+   	<string name="SimpleGTD.EditTaskDialog.ObjectiveEditText.text"></string>
    	
    	<string name="SimpleGTD.TaskUndone.default_text">New task</string>
    	<string name="SimpleGTD.TaskDone.default_text">Done</string>

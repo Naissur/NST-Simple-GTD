@@ -25,11 +25,11 @@
             android:layout_height="match_parent" >
 
             <Button
+                android:id="@+id/SimpleGTD.Todo"
                 android:text="@string/SimpleGTD.Todo.text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/SimpleGTD.Todo.height"
                 android:background="@drawable/simplegtd_todo_background"
-                android:onClick="onToDoButtonClicked"
                 style="@style/SimpleGTD.Todo.text_appearance"/>
 
             <ScrollView
@@ -54,24 +54,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" > 
 
-            <Button
-                android:text="@string/SimpleGTD.Done.text"
-                android:layout_width="@dimen/SimpleGTD.Done.width"
-                android:layout_height="@dimen/SimpleGTD.Done.height"
-                android:background="@drawable/simplegtd_done_background"
-                style="@style/SimpleGTD.Done.text_appearance"/>
+                <Button
+                    android:id="@+id/SimpleGTD.Done"
+                    android:text="@string/SimpleGTD.Done.text"
+                    android:layout_width="@dimen/SimpleGTD.Done.width"
+                    android:layout_height="@dimen/SimpleGTD.Done.height"
+                    android:background="@drawable/simplegtd_done_background"
+                    style="@style/SimpleGTD.Done.text_appearance"/>
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:focusable="false"
-                    android:orientation="vertical"
-                    android:id="@+id/SimpleGTD.DoneTasksContainer"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
-                    android:animateLayoutChanges="true"/>
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:focusable="false"
+                        android:orientation="vertical"
+                        android:id="@+id/SimpleGTD.DoneTasksContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" 
+                        android:animateLayoutChanges="true"/>
                 
             </ScrollView>
 
