@@ -20,6 +20,7 @@ public class JsonTaskWorker {
 			json.put("id", task.getId());
 			json.put("objective", task.getTaskObjective());
 			json.put("state", task.getTaskState().ordinal());
+			json.put("order", task.getOrder());
 		} catch (JSONException e) {
 			System.out.println("Exception in creating json object from task");
 			System.out.println(e.toString());
@@ -51,6 +52,7 @@ public class JsonTaskWorker {
 			task.setTaskId(json.getInt("id"));
 			task.setTaskObjective(json.getString("objective"));
 			task.setTaskState(TaskState.values()[json.getInt("state")]);
+			task.setTaskOrder(json.getInt("order"));
 		} catch (JSONException e) {
 			System.out.println(e.toString());
 			System.out.println("Exception in creating task from json object");

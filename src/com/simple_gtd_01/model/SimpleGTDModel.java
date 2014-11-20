@@ -3,8 +3,11 @@ package com.simple_gtd_01.model;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -69,6 +72,7 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	@Override
 	public void saveTasksToJson() {
 		try {
+			this.updateTasksOrder();
 			FileOutputStream fos = openFileOutput(JSON_DATA_FILENAME, Context.MODE_PRIVATE);
 			json.writeToJson(fos, taskPool.getTasks());
 		} catch (Exception e) {
@@ -103,17 +107,28 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	}
 
 	@Override
-	public void sendAllTasksToView() {
+	public void sendAllTasksToView() {   // If invoked in runtime, use this.updateTasksOrder()
 		TreeMap<Integer, Task> tasks = taskPool.getTasks();
+		TreeSet<Task> orderedTasks = new TreeSet<Task>();
 		for (Map.Entry<Integer, Task> task : tasks.entrySet()){
-			if (task.getValue().getTaskState() == TaskState.DONE){
-				m_view.addDoneTaskToView(task.getKey(), task.getValue().getTaskObjective());
+			orderedTasks.add(task.getValue());
+		}
+		for (Iterator<Task> i = orderedTasks.descendingIterator();i.hasNext();){
+			Task task = i.next();
+			if(task.getTaskState() == TaskState.UNDONE){
+				m_view.addNewTaskToView(task.getId(), task.getTaskObjective());
 			}
-			else {
-				m_view.addNewTaskToView(task.getKey(), task.getValue().getTaskObjective());
+			else{
+				m_view.addDoneTaskToView(task.getId(), task.getTaskObjective());
 			}
 		}
 	}
+
+	@Override
+	public void updateTasksOrder() {
+		for (Map.Entry<Integer, Task> task : taskPool.getTasks().entrySet()){
+			task.getValue().setTaskOrder(m_view.getTaskPos(task.getKey()));
+		}
 		
-	
+	}
 }

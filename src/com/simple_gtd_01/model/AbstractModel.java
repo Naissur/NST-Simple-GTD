@@ -9,4 +9,5 @@ public interface AbstractModel {
 	public abstract void saveTasksToJson();
 	public abstract void readTasksFromJson();
 	public abstract void sendAllTasksToView();
+	public abstract void updateTasksOrder();
 }
