@@ -263,4 +263,11 @@ public class MainActivity extends AbstractView {
 	
 	private AbstractModel m_model;
 	private AbstractController m_controller;
+
+
+	@Override
+	public int getTaskPos(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

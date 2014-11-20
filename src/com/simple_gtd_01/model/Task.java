@@ -1,10 +1,11 @@
 package com.simple_gtd_01.model;
 
 
-public class Task {
+public class Task implements Comparable<Task> {
 	private String taskObjective;
 	private int id;
 	private TaskState state;
+	private int order;
 
 	//Constructors
 	//Initializing Constructor
@@ -27,6 +28,9 @@ public class Task {
 	public void setTaskId(int id){
 		this.id = id;
 	}
+	public void setTaskOrder(int order){
+		this.order = order;
+	}
 	
 	//Getters
 	public String getTaskObjective(){
@@ -37,6 +41,23 @@ public class Task {
 	}
 	public TaskState getTaskState(){
 		return state;
+	}
+	public int getOrder(){
+		return this.order;
+	}
+	
+	//Comparator
+	@Override
+	public int compareTo(Task another) {
+		if(this.state == another.state){
+			return this.order - another.order;
+		}
+		else if (this.state == TaskState.UNDONE){
+			return 1;
+		}
+		else {
+			return -1;
+		}
 	}
 }
 
