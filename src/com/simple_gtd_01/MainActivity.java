@@ -6,12 +6,6 @@ import java.util.List;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.LayoutTransition;
-import android.content.Context;
-import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.content.pm.ActivityInfo;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -47,11 +41,28 @@ public class MainActivity extends AbstractView {
 		setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);     //  Fixed Portrait orientation
 		setContentView(R.layout.activity_main);
 		
-		Button todo_btn = (Button)this.findViewById(R.id.SimpleGTD_Todo);
+		
+		//Set up tasks containers
+		LinearLayout scroll_layout = (LinearLayout) this.findViewById(R.id.SimpleGTD_Scroll_Layout);
+
+		UndoneTasksContainer undone_tasks_view = new UndoneTasksContainer(this);
+		scroll_layout.addView(undone_tasks_view.getView());
+		
+		DoneTasksContainer done_tasks_view = new DoneTasksContainer(this);
+		scroll_layout.addView(done_tasks_view.getView());
+
+		ViewGroup.LayoutParams undone_tasks_view_params = undone_tasks_view.getView().getLayoutParams();
+		undone_tasks_view_params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+		undone_tasks_view.getView().setLayoutParams(undone_tasks_view_params);
+		
+		ViewGroup.LayoutParams done_tasks_view_params = done_tasks_view.getView().getLayoutParams();
+		done_tasks_view_params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+		done_tasks_view.getView().setLayoutParams(done_tasks_view_params);
 		
 		final MainActivity m_activity = this;
+
 		
-		
+		Button todo_btn = (Button)this.findViewById(R.id.SimpleGTD_Todo);
 		// set up todo button listener
 		todo_btn.setOnClickListener(new OnClickListener(){
 			@Override

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/SimpleGTD.TodoView"
+    android:focusable="false"
+    android:orientation="vertical"
+    android:background="@color/SimpleGTD.UndoneList.background_color"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/SimpleGTD.Todo"
+        android:text="@string/SimpleGTD.Todo.text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/SimpleGTD.Todo.height"
+        android:background="@drawable/simplegtd_todo_background"
+        style="@style/SimpleGTD.Todo.text_appearance"/>
+
+        <!--   undone_tasks_container>
+        </undone_tasks_container>  -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <LinearLayout
+                android:focusable="false"
+                android:orientation="vertical"
+                android:id="@+id/SimpleGTD.UndoneTasksContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true" >
+
+                <!-- add to get additional space below tasks TODO unhardcore height! -->
+                <View 	
+                    android:layout_height="200dp"
+                    android:layout_width="match_parent"/>
+              
+            </LinearLayout>
+
+        </ScrollView>
+</LinearLayout>
+
