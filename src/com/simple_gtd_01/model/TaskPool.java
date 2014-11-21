@@ -69,4 +69,12 @@ public class TaskPool {
 			}
 		}
 	}
+	
+	public Date getTaskDoneDate(int id){
+		return tasks.get(id).getTaskDoneDate();
+	}
+	
+	public Date getTaskAddedDate(int id){
+		return tasks.get(id).getTaskAddedDate();
+	}
 }

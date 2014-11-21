@@ -132,4 +132,45 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item> 
     </style>
+    
+    <!-- Undone Task ControlBar Date Added appearance -->
+    
+    <style name="SimpleGTD.TaskUndone.ControlBar.DateAdded.style" parent="@android:style/Widget.TextView">
+        <!-- <item name="android:width">@dimen/SimpleGTD.TaskDone.width</item>
+        <item name="android:height">@dimen/SimpleGTD.TaskDone.height</item>  -->
+        <!-- <item name="android:gravity">center</item>  -->
+        <!-- <item name="android:background">@drawable/simplegtd_task_done_background</item> -->
+        <item name="android:textAppearance">@style/SimpleGTD.TaskUndone.ControlBar.DateAdded.text_appearance</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/SimpleGTD.TaskUndone.ControlBar.DateAdded.padding_left</item>
+        <item name="android:paddingTop">@dimen/SimpleGTD.TaskUndone.ControlBar.DateAdded.padding_top</item>
+        <item name="android:paddingBottom">@dimen/SimpleGTD.TaskUndone.ControlBar.DateAdded.padding_bottom</item>
+    </style>
+
+    <!--  Undone Task text appearance -->
+    <style name="SimpleGTD.TaskUndone.ControlBar.DateAdded.text_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/SimpleGTD.TaskUndone.ControlBar.DateAdded.text_color</item>
+        <item name="android:textSize">@dimen/SimpleGTD.TaskUndone.ControlBar.DateAdded.text_size</item>
+    </style>
+    
+    <!-- Done Task ControlBar Date Added appearance -->
+    
+    <style name="SimpleGTD.TaskDone.ControlBar.DateAdded.style" parent="@android:style/Widget.TextView">
+        <!-- <item name="android:width">@dimen/SimpleGTD.TaskDone.width</item>
+        <item name="android:height">@dimen/SimpleGTD.TaskDone.height</item>  -->
+        <!-- <item name="android:gravity">center</item>  -->
+        <!-- <item name="android:background">@drawable/simplegtd_task_done_background</item> -->
+        <item name="android:textAppearance">@style/SimpleGTD.TaskDone.ControlBar.DateAdded.text_appearance</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/SimpleGTD.TaskDone.ControlBar.DateAdded.padding_left</item>
+        <item name="android:paddingTop">@dimen/SimpleGTD.TaskDone.ControlBar.DateAdded.padding_top</item>
+        <item name="android:paddingBottom">@dimen/SimpleGTD.TaskDone.ControlBar.DateAdded.padding_bottom</item>
+    </style>
+
+    <!--  Done Task text appearance -->
+    <style name="SimpleGTD.TaskDone.ControlBar.DateAdded.text_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/SimpleGTD.TaskDone.ControlBar.DateAdded.text_color</item>
+        <item name="android:textSize">@dimen/SimpleGTD.TaskDone.ControlBar.DateAdded.text_size</item>
+    </style>
+    
 </resources>

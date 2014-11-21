@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -43,13 +44,13 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	public void addNewTaskToModel(String objective) {
 		System.out.println("Model: Adding task \""+objective+"\" to model");
 		int id = taskPool.createTask(objective);
-		m_view.addNewTaskToView(id, objective);
+		m_view.addNewTaskToView(id, objective, dateFormat.format(taskPool.getTaskAddedDate(id)));
 	}
 
 	@Override
 	public void setTaskAsDone(int id) {
 		taskPool.setTaskState(id, TaskState.DONE);
-		m_view.setTaskAsDone(id);
+		m_view.setTaskAsDone(id, dateFormat.format(taskPool.getTaskDoneDate(id)));
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	public void modifyTask(int id, String newObjective) {
 		if(newObjective != null){
             taskPool.setTaskObjective(id, newObjective);
-            m_view.modifyTask(id, newObjective);
+            m_view.modifyTask(id, newObjective, null, null);
 		}
 	}
 
@@ -119,10 +120,11 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 		for (Iterator<Task> i = orderedTasks.descendingIterator();i.hasNext();){
 			Task task = i.next();
 			if(task.getTaskState() == TaskState.UNDONE){
-				m_view.addNewTaskToView(task.getId(), task.getTaskObjective());
+				m_view.addNewTaskToView(task.getId(), task.getTaskObjective(), dateFormat.format(task.getTaskAddedDate()));
 			}
 			else{
-				m_view.addDoneTaskToView(task.getId(), task.getTaskObjective());
+				m_view.addDoneTaskToView(task.getId(), task.getTaskObjective(), dateFormat.format(task.getTaskAddedDate()),
+						dateFormat.format(task.getTaskDoneDate()));
 			}
 		}
 	}

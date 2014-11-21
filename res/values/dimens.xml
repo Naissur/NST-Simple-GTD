@@ -59,6 +59,11 @@
     <dimen name="SimpleGTD.TaskUndone.EditButton.width">-2dp</dimen>
     <dimen name="SimpleGTD.TaskUndone.EditButton.margin">0dp</dimen>
 
+    <dimen name="SimpleGTD.TaskUndone.ControlBar.DateAdded.text_size">20dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.ControlBar.DateAdded.padding_left">12dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.ControlBar.DateAdded.padding_top">2dp</dimen>
+    <dimen name="SimpleGTD.TaskUndone.ControlBar.DateAdded.padding_bottom">2dp</dimen>
+
 
     <dimen name="SimpleGTD.TaskDone.text_size">24dp</dimen>
     <dimen name="SimpleGTD.TaskDone.padding_left">12dp</dimen>
@@ -72,5 +77,11 @@
     <dimen name="SimpleGTD.TaskDone.DiscardButton.height">-2dp</dimen>
     <dimen name="SimpleGTD.TaskDone.DiscardButton.width">-2dp</dimen>
     <dimen name="SimpleGTD.TaskDone.DiscardButton.margin">0dp</dimen>
+
+    <dimen name="SimpleGTD.TaskDone.ControlBar.DateAdded.text_size">20dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.ControlBar.DateAdded.padding_left">12dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.ControlBar.DateAdded.padding_top">2dp</dimen>
+    <dimen name="SimpleGTD.TaskDone.ControlBar.DateAdded.padding_bottom">2dp</dimen>
+
     
 </resources>
