@@ -14,6 +14,24 @@ public class ViewTask {
 	private int m_id;
 	private String m_objective;
 	private View m_view;
+	private String m_date_added;
+	private String m_date_done;
+	
+	public String getDateAdded(){
+		return m_date_added;
+	}
+	
+	public String getDateDone(){
+		return m_date_done;
+	}
+	
+	public void setDateAdded(String date){
+		m_date_added = date;
+	}
+	
+	public void setDateDone(String date){
+		m_date_done = date;
+	}
 	
 	public View getView(){
 		return m_view;
@@ -157,12 +175,17 @@ public class ViewTask {
 		m_objective = "";
 		m_state = State.UNDONE;
 		m_view = null;
+		m_date_added = "";
+		m_date_done = "";
 	}
 	
-	ViewTask(Context context, int width, int height, int id, String obj, State state){
+	ViewTask(Context context, int width, int height, int id, String obj, 
+						String date_added, String date_done, State state){
 		m_id = id;
 		m_objective = obj;
 		m_state = state;
+		m_date_added = date_added;
+		m_date_done = date_done;
 		this.createTaskView(context, width, height);
 	}
 	

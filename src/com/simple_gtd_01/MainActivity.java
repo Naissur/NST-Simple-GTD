@@ -216,11 +216,11 @@ public class MainActivity extends AbstractView {
 
 
 	@Override
-	public void addNewTaskToView(int identifier, String objective) {
+	public void addNewTaskToView(int identifier, String objective, String date_added) {
 		System.out.println("View: Adding task \""+objective+"\" to view");
 		final MainActivity _context = this;
 		ViewTask task = new ViewTask(this, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT,
-                                    	identifier, objective, ViewTask.State.UNDONE){
+                                    	identifier, objective, date_added, "", ViewTask.State.UNDONE){
 			@Override
 			public void onDoneButtonClicked() {
 				m_controller.setTaskAsDone(this.getId());
@@ -246,10 +246,10 @@ public class MainActivity extends AbstractView {
 	}
 
 	@Override
-	public void addDoneTaskToView(int identifier, String objective) {
+	public void addDoneTaskToView(int identifier, String objective, String date_added, String date_done) {
 		System.out.println("View: Adding task \""+objective+"\" to view");
 		ViewTask task = new ViewTask(this, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT,
-                                    	identifier, objective, ViewTask.State.DONE){
+                                    	identifier, objective, date_added, date_done, ViewTask.State.DONE){
             @Override
             public void onUndoneButtonClicked() {
                 m_controller.setTaskAsUndone(this.getId());
@@ -321,7 +321,7 @@ public class MainActivity extends AbstractView {
 		}
 	}
 
-	public void setTaskAsDone(int id) {
+	public void setTaskAsDone(int id, String date_done) {
 		// search in undone tasks
         for(int i = 0; i < m_undone_tasks_list.size(); i++){
             ViewTask task = m_undone_tasks_list.get(i);
@@ -341,7 +341,7 @@ public class MainActivity extends AbstractView {
                 m_undone_tasks_container.removeView(task.getView());
                 m_undone_tasks_list.remove(i);
                 
-                this.addDoneTaskToView(id, task_copy.getObjective());
+                this.addDoneTaskToView(id, task_copy.getObjective(), task_copy.getDateAdded(), date_done);
                 return;
             }
         }
@@ -367,7 +367,7 @@ public class MainActivity extends AbstractView {
 
                 m_done_tasks_container.removeView(task.getView());
                 m_done_tasks_list.remove(i);
-                this.addNewTaskToView(id, task_copy.getObjective());
+                this.addNewTaskToView(id, task_copy.getObjective(), task_copy.getDateAdded());
                 return;
             }
         }
@@ -382,7 +382,7 @@ public class MainActivity extends AbstractView {
 	private AbstractController m_controller;
 
 	@Override
-	public void modifyTask(int id, String new_obj) {
+	public void modifyTask(int id, String new_obj, String date_added, String date_done) {
 		// search in undone tasks
         for(int i = 0; i < m_undone_tasks_list.size(); i++){
             ViewTask task = m_undone_tasks_list.get(i);
@@ -390,6 +390,13 @@ public class MainActivity extends AbstractView {
             	if(new_obj != null){
                     task.setObjective(new_obj);
             	}
+            	if(date_added != null){
+            		task.setDateAdded(date_added);
+            	}
+            	if(date_done != null){
+            		task.setDateDone(date_added);
+            	}
+            	                  
                 return;
             }
         }
@@ -400,6 +407,12 @@ public class MainActivity extends AbstractView {
             if(task.getId() == id){
             	if(new_obj != null){
                     task.setObjective(new_obj);
+            	}
+            	if(date_added != null){
+            		task.setDateAdded(date_added);
+            	}
+            	if(date_done != null){
+            		task.setDateDone(date_added);
             	}
                 return;
             }

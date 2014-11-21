@@ -40,13 +40,13 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	public void addNewTaskToModel(String objective) {
 		System.out.println("Model: Adding task \""+objective+"\" to model");
 		int id = taskPool.createTask(objective);
-		m_view.addNewTaskToView(id, objective);
+		m_view.addNewTaskToView(id, objective, ""); //TODO add date
 	}
 
 	@Override
 	public void setTaskAsDone(int id) {
 		taskPool.setTaskState(id, TaskState.DONE);
-		m_view.setTaskAsDone(id);
+		m_view.setTaskAsDone(id, ""); //TODO add date
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	public void modifyTask(int id, String newObjective) {
 		if(newObjective != null){
             taskPool.setTaskObjective(id, newObjective);
-            m_view.modifyTask(id, newObjective);
+            m_view.modifyTask(id, newObjective, null, null);
 		}
 	}
 
@@ -116,10 +116,10 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 		for (Iterator<Task> i = orderedTasks.descendingIterator();i.hasNext();){
 			Task task = i.next();
 			if(task.getTaskState() == TaskState.UNDONE){
-				m_view.addNewTaskToView(task.getId(), task.getTaskObjective());
+				m_view.addNewTaskToView(task.getId(), task.getTaskObjective(), "");
 			}
 			else{
-				m_view.addDoneTaskToView(task.getId(), task.getTaskObjective());
+				m_view.addDoneTaskToView(task.getId(), task.getTaskObjective(), "", "");
 			}
 		}
 	}
