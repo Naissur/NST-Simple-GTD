@@ -1,5 +1,6 @@
 package com.simple_gtd_01.model;
 
+import java.util.Date;
 import java.util.TreeMap;
 
 public class TaskPool {
@@ -22,6 +23,7 @@ public class TaskPool {
 		task.setTaskObjective(objective);
 		task.setTaskState(TaskState.UNDONE);
 		task.setTaskId(maxId);
+		task.setTaskAddedDate(new Date());
 		tasks.put(task.getId(), task);
 		return task.getId();
 	}
@@ -43,6 +45,12 @@ public class TaskPool {
 	public void setTaskState(int id, TaskState state){
 		Task taskToModify = tasks.get(id);
 		taskToModify.setTaskState(state);
+		if(state == TaskState.DONE){
+			taskToModify.setTaskDoneDate(new Date());
+		}
+		else{
+			taskToModify.setTaskDoneDate(null);
+		}
 	}
 	
 	public String getTaskObjective(int id){

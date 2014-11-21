@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -23,12 +24,14 @@ public class SimpleGTDModel extends ContextWrapper implements AbstractModel {
 	private TaskPool taskPool;
 	private AbstractView m_view;
 	private JsonTaskWorker json;
+	private SimpleDateFormat dateFormat;
 
 	public SimpleGTDModel(AbstractView view) {
 		super(view);
 		m_view = view;
 		json = new JsonTaskWorker();
 		taskPool = new TaskPool();
+		dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		System.out.println("Model: Simple GTD Model initialized");
 	}
 	

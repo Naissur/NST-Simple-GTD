@@ -1,11 +1,15 @@
 package com.simple_gtd_01.model;
 
+import java.util.Date;
+
 
 public class Task implements Comparable<Task> {
 	private String taskObjective;
 	private int id;
 	private TaskState state;
 	private int order;
+	private Date addedDate;
+	private Date doneDate;
 
 	//Constructors
 	//Initializing Constructor
@@ -31,6 +35,12 @@ public class Task implements Comparable<Task> {
 	public void setTaskOrder(int order){
 		this.order = order;
 	}
+	public void setTaskAddedDate(Date date){
+		this.addedDate = date;
+	}
+	public void setTaskDoneDate(Date date){
+		this.doneDate = date;
+	}
 	
 	//Getters
 	public String getTaskObjective(){
@@ -44,6 +54,12 @@ public class Task implements Comparable<Task> {
 	}
 	public int getOrder(){
 		return this.order;
+	}
+	public Date getTaskAddedDate(){
+		return addedDate;
+	}
+	public Date getTaskDoneDate(){
+		return doneDate;
 	}
 	
 	//Comparator

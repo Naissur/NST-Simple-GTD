@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -14,6 +16,12 @@ import org.json.JSONObject;
 
 public class JsonTaskWorker {
 	
+	private SimpleDateFormat dateFormat;
+	
+	public JsonTaskWorker(){
+		dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+	}
+	
 	private JSONObject createJsonObjectFromTask(Task task){
 		JSONObject json = new JSONObject();
 		try {
@@ -21,6 +29,13 @@ public class JsonTaskWorker {
 			json.put("objective", task.getTaskObjective());
 			json.put("state", task.getTaskState().ordinal());
 			json.put("order", task.getOrder());
+			json.put("addeddate", dateFormat.format(task.getTaskAddedDate()));
+			if (task.getTaskState() == TaskState.DONE){
+				json.put("donedate", dateFormat.format(task.getTaskDoneDate()));
+			}
+			else {
+				json.put("donedate", "null");
+			}
 		} catch (JSONException e) {
 			System.out.println("Exception in creating json object from task");
 			System.out.println(e.toString());
@@ -53,9 +68,18 @@ public class JsonTaskWorker {
 			task.setTaskObjective(json.getString("objective"));
 			task.setTaskState(TaskState.values()[json.getInt("state")]);
 			task.setTaskOrder(json.getInt("order"));
+			task.setTaskAddedDate(dateFormat.parse(json.getString("addeddate")));
+			String doneDate = json.getString("donedate");
+			if (!doneDate.equals("null")){
+				task.setTaskDoneDate(dateFormat.parse(doneDate));
+			}
 		} catch (JSONException e) {
 			System.out.println(e.toString());
 			System.out.println("Exception in creating task from json object");
+			e.printStackTrace();
+		} catch (ParseException e) {
+			System.out.println(e.toString());
+			System.out.println("Exception in parcing date while loading");
 			e.printStackTrace();
 		}
 		return task;
