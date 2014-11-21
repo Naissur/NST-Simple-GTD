@@ -23,6 +23,7 @@
 
     <color name="SimpleGTD.TaskUndone.ControlBar.DoButton.pressed_color">#76ABC8</color>
     <color name="SimpleGTD.TaskUndone.ControlBar.EditButton.pressed_color">#76ABC8</color>
+    <color name="SimpleGTD.TaskUndone.ControlBar.DateAdded.text_color">#3F5662</color>
     <color name="SimpleGTD.TaskUndone.ControlBar.background_color">#A6CEE3</color>
     
 
@@ -31,14 +32,15 @@
     <color name="SimpleGTD.Done.text_color">#FFFFFF</color>
     <color name="SimpleGTD.Done.border_color">#A4AF6D</color>
 
-    <color name="SimpleGTD.TaskDone.UndoButton.pressed_color">#C6CF9E</color>
     
     <color name="SimpleGTD.TaskDone.background_color">#F0FDB5</color>
     <color name="SimpleGTD.TaskDone.text_color">#000000</color>
     <color name="SimpleGTD.TaskDone.border_color">#A4AF6D</color>
 
     <color name="SimpleGTD.TaskDone.ControlBar.UndoButton.pressed_color">#A4AF6D</color>
+    <color name="SimpleGTD.TaskDone.ControlBar.DiscardButton.pressed_color">#A4AF6D</color>
     <color name="SimpleGTD.TaskDone.ControlBar.background_color">#F0FDB5</color>
+    <color name="SimpleGTD.TaskDone.ControlBar.DateAdded.text_color">#64694A</color>
     
     <color name="SimpleGTD.AddTaskDialog.background_color">#D8ECF6</color>
 

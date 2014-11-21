@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/SimpleGTD.TaskUndoneTemplate"
+    android:id="@+id/SimpleGTD.TaskUndone"
     android:background="@drawable/simplegtd_task_undone_background"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -22,6 +22,7 @@
         android:layout_width = "match_parent"
         android:layout_height = "0dp"
         android:padding="0dp">
+        
 
         <ImageButton 
             android:id="@+id/SimpleGTD.TaskUndone.ControlBar.DoButton"
@@ -49,6 +50,17 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/SimpleGTD.TaskUndone.ControlBar.DoButton"
         />
+
+        <TextView
+            android:id="@+id/SimpleGTD.TaskUndone.ControlBar.date_added"
+            android:text = "21-11-2014"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/SimpleGTD.TaskUndone.ControlBar.EditButton"
+            style="@style/SimpleGTD.TaskUndone.ControlBar.DateAdded.style"
+            />
 
     </RelativeLayout>
 

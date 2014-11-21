@@ -105,6 +105,10 @@ public class ViewTask {
 						onEditButtonClicked();
 					}
                 });
+                
+                //Set date added
+                TextView date_added_view = (TextView)res_view.findViewById(R.id.SimpleGTD_TaskUndone_ControlBar_date_added);
+                date_added_view.setText("Added: "+m_date_added);
 
                 LayoutParams params = new LayoutParams(width,height);
                 res_view.setLayoutParams(params);
@@ -155,6 +159,10 @@ public class ViewTask {
 					}
                 });
 
+                //Set date done
+                TextView date_done_view = (TextView)res_view.findViewById(R.id.SimpleGTD_TaskDone_ControlBar_date_done);
+                date_done_view.setText("Done: "+m_date_done);
+                
                 LayoutParams params = new LayoutParams(width,height);
                 res_view.setLayoutParams(params);
                 m_view = res_view;

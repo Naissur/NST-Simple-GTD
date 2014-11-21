@@ -49,6 +49,17 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/SimpleGTD.TaskDone.ControlBar.UndoButton"
         /> 
+        
+        <TextView
+            android:id="@+id/SimpleGTD.TaskDone.ControlBar.date_done"
+            android:text = "Done: 15-11-2014"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@id/SimpleGTD.TaskDone.ControlBar.DiscardButton"
+            style="@style/SimpleGTD.TaskDone.ControlBar.DateAdded.style"
+            />
 
     </RelativeLayout>
 
